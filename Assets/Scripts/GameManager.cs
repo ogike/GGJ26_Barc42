@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     public Transform mainCameraTransform { get; private set; }
-    public Camera mainCamera { get; private set; }
+    public Camera mainCamera;
 
     private void Awake()
     {
@@ -17,5 +17,6 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        mainCameraTransform = mainCamera.transform;
     }
 }
