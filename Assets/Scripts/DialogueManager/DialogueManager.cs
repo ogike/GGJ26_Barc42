@@ -58,7 +58,7 @@ namespace Dialogue
 
         public bool debugMode;
 
-        //private DialogueUI _ui;
+        private DialogueUI _ui;
 
         private void Awake() 
         {
@@ -73,7 +73,7 @@ namespace Dialogue
 
         private void Start() 
         {
-            //_ui = DialogueUI.Instance;
+            _ui = DialogueUI.Instance;
             dialogueIsPlaying = false;
             
             currentStory = new Story(inkJson.text);
@@ -208,7 +208,7 @@ namespace Dialogue
             StopListeningToStoryVariable(currentStory);
 
             dialogueIsPlaying = false;
-            //_ui.HideDialogueBoxes();
+            _ui.HideDialogueBoxes();
 
             //TODO: camera
             // CameraFollow.Instance.SetZoomNormal();
@@ -297,8 +297,8 @@ namespace Dialogue
             _continueInputBuffered = false;
             bool isAddingRichTextTag = false;
             
-            //if(_npcTalking) _ui.LoadLineNpc(line);
-            //else           _ui.LoadLinePlayer(line, _isThought);
+            if(_npcTalking) _ui.LoadLineNpc(line);
+            else           _ui.LoadLinePlayer(line, _isThought);
 
             // wait to reset frame input
             yield return new WaitForSeconds(0);
@@ -315,8 +315,7 @@ namespace Dialogue
                 {
                     if(debugMode) Debug.Log("InkDebug: Skipping this line.");
                     
-                    //if(_npcTalking) _ui.SetNpcTextVisibleCharacters(line.Length);
-                    //else           _ui.SetPlayerTextVisibleCharacters(line.Length);
+                    _ui.SetTextVisibleCharacters(line.Length);
 
                     break;
                 }
@@ -349,8 +348,7 @@ namespace Dialogue
                 if(!isAddingRichTextTag)
                 {
                     visibleLetters++;
-                    //if(_npcTalking) _ui.SetNpcTextVisibleCharacters(visibleLetters);
-                    //else           _ui.SetPlayerTextVisibleCharacters(visibleLetters);
+                    _ui.SetTextVisibleCharacters(visibleLetters);
 
                     float curTypingSpeed = typingSpeed;
                     if (letter == '.')
@@ -368,7 +366,7 @@ namespace Dialogue
             if (!_autoContinue)
             {
                 // actions to take after the entire line has finished displaying
-                //_ui.ShowContinueIcon();
+                _ui.ShowContinueIcon();
 
             }
             else
@@ -452,7 +450,7 @@ namespace Dialogue
             _currentChoiceIndex = 0;
             List<string> choiceTexts = new List<string>();
             currentStory.currentChoices.ForEach(choice => choiceTexts.Add(choice.text));
-            //_ui.ShowChoicesPanel(choiceTexts, _currentChoiceIndex);
+            _ui.ShowChoicesPanel(choiceTexts, _currentChoiceIndex);
         }
 
         public void NextChoice()
@@ -469,7 +467,7 @@ namespace Dialogue
                                      + ": " + currentStory.currentChoices[_currentChoiceIndex].text);
 
             
-            //_ui.ChangeCoice(_currentChoiceIndex);
+            _ui.ChangeCoice(_currentChoiceIndex);
         }
 
         public void PreviousChoice()
@@ -486,7 +484,7 @@ namespace Dialogue
                                      + ": " + currentStory.currentChoices[_currentChoiceIndex].text);
 
 
-            //_ui.ChangeCoice(_currentChoiceIndex);
+            _ui.ChangeCoice(_currentChoiceIndex);
         }
 
         public Ink.Runtime.Object GetVariableState(string variableName) 
@@ -503,7 +501,7 @@ namespace Dialogue
         private IEnumerator PauseLines(float seconds)
         {
             if(debugMode) Debug.Log("Ink: pausing lines");
-            //_ui.HideDialogueBoxes();
+            _ui.HideDialogueBoxes();
             _isPausedFromInk = true;
             _canContinueToNextLine = false;
             

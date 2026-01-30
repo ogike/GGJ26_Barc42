@@ -11,7 +11,7 @@ namespace Utils
         private void Start()
         {
             _trans = transform;
-            _camTrans = GameManager.Instance.mainCamera;
+            _camTrans = GameManager.Instance.mainCameraTransform;
         }
 
         private void LateUpdate()

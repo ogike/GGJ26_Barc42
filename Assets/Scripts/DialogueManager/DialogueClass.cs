@@ -13,15 +13,9 @@ namespace Dialogue
         public string inkPath;
 
         public bool monologue = false;
-        //public CinemachineCamera talkingCam;
 
-        [Header("NPC specific, fill when monologue is false")]
-        public Transform speechBubblePosition;
-        
         public string talkingTag;
-        public Transform playerTalkingPosition;
-        [FormerlySerializedAs("npcPosition")] public Transform npcTransform;
-
+        
         // private DialogueTrigger _npcTrigger;
         //
         // public void InitializeFromNpc(DialogueTrigger trigger)
