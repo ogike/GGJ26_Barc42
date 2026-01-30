@@ -110,3 +110,6 @@ ProjectSettings/Packages/com.unity.polybrush/Settings.json
 *.bak
 *.bak*
 *.blend1
+/.vscode
+/Assets/MobileDependencyResolver
+Assets/MobileDependencyResolver.meta
