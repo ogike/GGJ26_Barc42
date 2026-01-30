@@ -97,3 +97,16 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+
+# Manually added
+*.dwlt
+UserSettings/EditorUserSettings.asset
+.idea/
+UserSettings/
+UserSettings/Search.settings
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/Packages/com.unity.polybrush/Settings.json
+*.bak
+*.bak*
+*.blend1
