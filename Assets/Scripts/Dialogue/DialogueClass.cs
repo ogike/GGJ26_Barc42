@@ -16,19 +16,20 @@ namespace Dialogue
 
         public string talkingTag;
         
-        // private DialogueTrigger _npcTrigger;
-        //
-        // public void InitializeFromNpc(DialogueTrigger trigger)
-        // {
-        //     if (!monologue)
-        //     {
-        //         _npcTrigger = trigger;
-        //     }
-        // }
+        private DialogueTrigger _npcTrigger;
+        
+        public void InitializeFromNpc(DialogueTrigger trigger)
+        {
+            if (!monologue)
+            {
+                _npcTrigger = trigger;
+            }
+        }
 
         public void Start()
         {
-            DialogueManager.Instance.EnterDialogueMode(this);
+            Debug.Log($"Starting dialogue at {inkPath}");
+            //DialogueManager.Instance.EnterDialogueMode(this);
         }
         
         public void Stop()

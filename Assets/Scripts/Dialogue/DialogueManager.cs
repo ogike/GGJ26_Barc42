@@ -73,7 +73,7 @@ namespace Dialogue
 
         private void Start() 
         {
-            _ui = DialogueUI.Instance;
+            //_ui = DialogueUI.Instance;
             dialogueIsPlaying = false;
             
             currentStory = new Story(inkJson.text);
