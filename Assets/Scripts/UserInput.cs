@@ -12,18 +12,22 @@ public class UserInput : MonoBehaviour
     
     public bool PauseMenuPressedThisFrame { get; private set; }
 
-    public Vector2 MoveInput { get; private set; }
+    public bool GoToPointPressedThisFrame { get; private set; }
+    public Vector2 MoveTarget { get; private set; }
     
     public bool DialogueContinuePressedThisFrame {get ; private set; }
-    
     public bool DialogueAutoContinueHeldThisFrame {get ; private set; }
     public bool DialogueAutoContinuePressedThisFrame { get; private set; }
     public bool DialogueAutoContinueReleasedThisFrame { get; private set; }
+    public bool DialogueNextChoicePressedThisFrame { get; private set; }
+    public bool DialoguePrevChoicePressedThisFrame { get; private set; }
     
     //actions
     private InputAction _menuAction;
     private InputAction _interactAction;
     private InputAction _dialogueAutoContinueAction;
+    private InputAction _dialogueNextChoice;
+    private InputAction _dialoguePrevChoice;
     
     private InputAction _moveAction;
 
@@ -44,16 +48,21 @@ public class UserInput : MonoBehaviour
         
         _interactAction = _playerInput.actions["Interact"];
         _dialogueAutoContinueAction = _playerInput.actions["DialogueAutoContinue"];
+        _dialogueNextChoice = _playerInput.actions["DialogueNextChoice"];
+        _dialoguePrevChoice = _playerInput.actions["DialoguePrevChoice"];
         _menuAction = _playerInput.actions["PauseMenu"];
     }
 
     private void Update()
     {
-        MoveInput = _moveAction.ReadValue<Vector2>();
+        GoToPointPressedThisFrame = _playerInput.actions["GoToPosition"].WasPressedThisFrame();
+        MoveTarget = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         DialogueAutoContinueHeldThisFrame = _dialogueAutoContinueAction.IsPressed();
         DialogueAutoContinuePressedThisFrame = _dialogueAutoContinueAction.WasPressedThisFrame();
         DialogueAutoContinueReleasedThisFrame = _dialogueAutoContinueAction.WasReleasedThisFrame();
+        DialogueNextChoicePressedThisFrame = _dialogueNextChoice.WasPressedThisFrame();
+        DialoguePrevChoicePressedThisFrame = _dialoguePrevChoice.WasPressedThisFrame();
         
         InteractButtonPressedThisFrame = _interactAction.WasPressedThisFrame();
         InteractButtonHeldThisFrame = _interactAction.IsPressed();
