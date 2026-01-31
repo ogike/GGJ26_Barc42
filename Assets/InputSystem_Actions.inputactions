@@ -106,9 +106,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GoToPoint",
+                    "name": "GoToPosition",
                     "type": "Button",
                     "id": "1bf82836-0cb1-4590-930f-46709d1344b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DialogueNextChoice",
+                    "type": "Button",
+                    "id": "2a8bafe3-890a-441c-b306-e0521b2feba2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DialoguePrevChoice",
+                    "type": "Button",
+                    "id": "dc19d531-3163-43f6-9895-d96b0ab910a4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -541,7 +559,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "GoToPoint",
+                    "action": "GoToPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7545e4dd-093f-48e2-b44c-57db4321e597",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DialogueNextChoice",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8e15038-b27a-46e4-b7f6-7581e40aa900",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DialoguePrevChoice",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
