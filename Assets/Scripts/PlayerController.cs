@@ -78,85 +78,29 @@ public class PlayerController : MonoBehaviour
         if (UserInput.Instance.GoToPointPressedThisFrame)
         {
             _navMeshAgent.SetDestination(UserInput.Instance.MoveTarget);
-            _isMoving = true;
             _timeSinceLastStop = 0;
             _timeSinceLastMove = 0;
-            animator.SetBool("isMoving", true);
         }
-        Debug.Log(_navMeshAgent.steeringTarget);
 
-        // Start moving if we havent
-        // UpdateMoveRotation(inputH, inputV);
+        _isMoving = _navMeshAgent.velocity.magnitude > 0.1f;
+        animator.SetBool("isMoving", _isMoving);
+
+        if (_isMoving) UpdateMoveRotation();
         
         // This is overwriting the full velocity of the Rigidbody system. This is not the best, but gives us the most control.
         // _rigidbody.linearVelocity = newFullForce;
     }
     
-    private void UpdateMoveRotation(float inputH, float inputV)
+    private void UpdateMoveRotation()
     {
-        // make it so look rot stays
-        if (Mathf.Abs(inputH - lastInputH) > _floatingTolerance ||
-            Mathf.Abs(inputV - lastInputV) > _floatingTolerance)
-        {
-            // if (inputH == 0 && inputV == 0)
-            //     plusRotValue = 0;
-            // else
-            //     plusRotValue = 90;
+        Vector2 steeringTarget = _navMeshAgent.steeringTarget;
+        Vector2 direction = (steeringTarget - (Vector2)_trans.position).normalized;
+        
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        _trans.rotation = Quaternion.Euler(0, 0, angle);
 
-            float lookH = inputH;
-            float lookV = inputV;
-        
-            //restrict diagonal
-            if (Mathf.Abs(inputH) > 0 && Mathf.Abs(inputV) > 0)
-            {
-                //dont rotate
-                lookH = _last4WayDir.x;
-                lookV = _last4WayDir.y;
-            }
-            else
-            {
-                _last4WayDir.x = lookH;
-                _last4WayDir.y = lookV;
-            }
-        
-            float rotZ = Mathf.Atan2(lookV, lookH) * Mathf.Rad2Deg;
-        
-            float finalRot = rotZ - plusRotValue;
-            _trans.rotation = Quaternion.Euler(0, 0, finalRot);
-            rotatedThisUpdate = true;
-
-            lastInputH = inputH;
-            lastInputV = inputV;
-        
-            SetMecanimRotation(lookH, lookV);
-        }
+        animator.SetFloat("lookH", direction.x);
+        animator.SetFloat("lookV", direction.y);
     }
 
-        
-        public void RecenterToSpritePivot()
-        {
-            Vector3 newPos = spritePivot.position;
-            _trans.position = newPos;
-            spritePivot.position = newPos;
-        }
-
-        private void SetMecanimRotation(float inputH, float inputV)
-        {
-            float absH = Mathf.Abs(inputH);
-            float absV = Mathf.Abs(inputV);
-
-            Vector2 finalVec = Vector2.zero;
-
-            if (absH > absV)
-            {
-                finalVec = inputH > 0 ? Vector2.right : Vector2.left;
-            }
-            else if (absH < absV)
-            {
-                finalVec = inputV > 0 ? Vector2.up : Vector2.down;
-            }
-        
-            animator.SetFloat("lookH", finalVec.x);
-            animator.SetFloat("lookV", finalVec.y);
-        }
 }
