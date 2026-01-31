@@ -10,6 +10,11 @@ EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 
 VAR owner_interest = 0
+VAR owner_interest_lion = 1
+VAR owner_interest_fox = 0
+VAR owner_interest_alien = -1
+
+VAR current_mask = "alien"
 
 === OWNER
 
@@ -206,6 +211,19 @@ Meow.
 -> DONE
 //##################################################################################
 
+=== function getCurrentInterestLion() ===
+{ current_mask:
+    - "alien": 
+        ~ return owner_interest_alien
+    - else:
+        ~ return owner_interest_alien 
+}
+
+=== function changeCurrentInterestLion(value)
+{
+    - current_mask == "alien":
+        ~ owner_interest_alien += value
+} 
 
 // this is purely to make the errors go away in the Ink Player, will be overriden by unity, ignore
 === function fadeOutSequence(x,y,z) ===
