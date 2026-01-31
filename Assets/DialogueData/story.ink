@@ -17,7 +17,7 @@ VAR bear_interest_fox = 0
 VAR bear_interest_alien = 0
 VAR fox_interest_lion = 1
 VAR fox_interest_bear = 4
-VAR fox_interest_alien = -1
+VAR fox_interest_alien = 0
 
 VAR current_mask = "alien"
 
@@ -124,9 +124,9 @@ Fox: It is VRM, have you heard of it before?
     ~ changeCurrentInterestFox(-1)
     Fox: Hmpf, maybe you are not worth my time after all. 
 * French, isn't it? Camille's spring collection is refined.
+    ~ changeCurrentInterestFox(1)
     Fox: What a polished taste you have
     Fox: And the flattery is not lost on me darling~
-    ~ changeCurrentInterestFox(1)
 - -> HUB
 
 = CHIT_CHAT_DRUGS
@@ -177,7 +177,7 @@ Player: Want to join to my room?
     ~ fadeOut(0.5)
     Player: bite bite bite bite
     Fox: nooooooooooooo
-    ~ killNpc("SpaceFox")
+    ~ killNpc("Fox")
     ~ teleportPlayer("PostKillPosition")
     ~ fadeIn(0.5)
 - -> DONE
@@ -238,7 +238,7 @@ Player: Why don't we continue this at your room?
 Bear: I agree that we continue this without the crowd watching.
 ~ fadeOut(0.5)
 Player: Imagine animations here.
-~ killNpc("MinisterWar")
+~ killNpc("Bear")
 ~ teleportPlayer("PostKillPosition")
 ~ fadeIn(0.5)
 -> DONE
