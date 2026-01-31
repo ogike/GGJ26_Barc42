@@ -97,6 +97,7 @@ namespace UI
         [SerializeField] private GameObject dialoguePanel;
         
         [SerializeField] private TextMeshProUGUI dialogueText;
+        [SerializeField] private TextMeshProUGUI talkingTitleText;
         [SerializeField] private Image npcPortrait; //TODO: replace with custom PanelUI
         [SerializeField] private Image playerPortrait;
         [SerializeField] private PanelUI continueIcon;
@@ -161,6 +162,11 @@ namespace UI
         public void SetTextVisibleCharacters(int num)
         {
             dialogueText.maxVisibleCharacters = num;
+        }
+
+        public void SetTalkingTitle(string title)
+        {
+            talkingTitleText.text = title;
         }
 
         public void LoadLinePlayer(string text, bool thought)
