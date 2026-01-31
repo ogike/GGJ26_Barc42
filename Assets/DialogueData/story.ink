@@ -9,14 +9,14 @@ EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 
-VAR owner_interest = 0
-VAR owner_interest_lion = 1
-VAR owner_interest_fox = 0
-VAR owner_interest_alien = -1
+VAR lion_interest = 0
+VAR lion_interest_fox = 4
+VAR lion_interest_alien = -1
+VAR lion_interest_bear = -1
 
 VAR current_mask = "alien"
 
-=== OWNER
+=== LION
 
 {
     - not INTRODUCTION: -> INTRODUCTION
@@ -27,48 +27,48 @@ VAR current_mask = "alien"
 
 = INTRODUCTION
 Player: What a lovely dress.<br>What's bringing you here tonight?
-Owner: Let's get to the point.<br>What do you want?
+Lion: Let's get to the point.<br>What do you want?
 -> HUB
 
 = HUB
 * How can I join the funding?
     -> CHIT_CHAT_FUNDING
 * [*stares*]
-    Owner: *leaves*.
-    ~ owner_interest--
+    Lion: *leaves*.
+    ~ lion_interest--
     -> HUB
 * [Nothing.]
-    Owner: Uh.... sure.
+    Lion: Uh.... sure.
     -> HUB
 * What is your finest liquor?
     -> CHIT_CHAT_LIQUOR
-* {owner_interest > 0} [Lure them]
+* {lion_interest > 0} [Lure them]
     -> LURE
 + Sorry. I have to go.
     -> DONE
 + -> fallback
 
 = CHIT_CHAT_FUNDING
-Owner: Oh! You can leave a cheque at the receptionist!
+Lion: Oh! You can leave a cheque at the receptionist!
 * That's too much work...
-    ~ owner_interest--
+    ~ lion_interest--
 * Thank you! I will leave a gazillion dollars.
     The children of the future war need it.
-    ~ owner_interest++
+    ~ lion_interest++
 - -> HUB
 
 = CHIT_CHAT_LIQUOR
 I bet your establishment has some good wine.
-Owner: Thank you! 
-~ owner_interest++
+Lion: Thank you! 
+~ lion_interest++
 -> HUB
 
 = LURE
 Player: Why don't we continue this at your room?
-Owner: Of course! I trust you so much now!
+Lion: Of course! I trust you so much now!
 ~ fadeOut(0.5)
 Player: Imagine animations here.
-~ killNpc("Owner")
+~ killNpc("Lion")
 ~ teleportPlayer("PostKillPosition")
 ~ fadeIn(0.5)
 -> DONE
@@ -76,13 +76,16 @@ Player: Imagine animations here.
 //TODO: animation
 
 = fallback
-Owner: you ran out of choces.
+Lion: you ran out of choces.
 Meow.
 -> DONE
 
-VAR space_ceo_interest = 0
+VAR fox_interest = 0
+VAR fox_interest_lion = 1
+VAR fox_interest_alien = -1
+VAR fox_interest_bear = 4
 
-=== SPACE_CEO
+=== FOX
 
 {
     - not INTRODUCTION: -> INTRODUCTION
@@ -91,9 +94,9 @@ VAR space_ceo_interest = 0
 
 = INTRODUCTION
 Player: What an alluring guest.<br>What's bringing you here tonight?
-Ceo: Better question...
-Ceo: What's bringing you here pretty boy?
-Ceo: What do you want from me?
+Fox: Better question...
+Fox: What's bringing you here to me, pretty thing?
+Fox: What do you want from me?
 -> HUB
 
 = HUB
@@ -101,41 +104,41 @@ Ceo: What do you want from me?
     -> CHIT_CHAT_FLATTER
 * Did you by any chance see any "Carmen" here?
     -> CHIT_CHAT_DRUGS
-* {space_ceo_interest > 0} [Lure them]
+* {fox_interest > 6} [Lure them]
     -> LURE
 * Sorry. I have to go.
     -> DONE
 + -> fallback
 
 = CHIT_CHAT_FLATTER
-Ceo: Hmmm, you have a good eye for these things, so I could share... 
-Ceo: It is VRM, have you heard of it before?
+Fox: Hmmm, you have a good eye for these things, so I could share... 
+Fox: It is VRM, have you heard of it before?
 * Isn't that an Italian brand? I might have heard of it, not sure.
-    ~ space_ceo_interest--
-    Ceo: Hmpf, maybe you are not worth my time after all. 
+    ~ fox_interest--
+    Fox: Hmpf, maybe you are not worth my time after all. 
 * French, isn't it? Camille's spring collection is refined, however I prefer the winter one where your dress is from.
-    Ceo: What a polished taste you have
-    Ceo: And the flattery is not lost on me darling~
-    ~ space_ceo_interest++
+    Fox: What a polished taste you have
+    Fox: And the flattery is not lost on me darling~
+    ~ fox_interest++
 - -> HUB
 
 = CHIT_CHAT_DRUGS
-Ceo: Not yet, would you be interested in finding her together? 
+Fox: Not yet, would you be interested in finding her together? 
 * I was just checking that nobody is using these kinds of drugs here.
     Player: Sorry for the assumption.
-    Ceo: ...
-    ~ space_ceo_interest--
+    Fox: ...
+    ~ fox_interest--
 * Of course, with your beautiful face I'm certain we will find it fast.
-    Ceo: I will lead the way.
-    ~ space_ceo_interest++
+    Fox: I will lead the way.
+    ~ fox_interest++
 - -> HUB
 
 = LURE
 Player: Want to join to my room?
     ~ fadeOut(0.5)
     Player: bite bite bite bite
-    Ceo: nooooooooooooo
-    ~ killNpc("SpaceCEO")
+    Fox: nooooooooooooo
+    ~ killNpc("SpaceFox")
     ~ teleportPlayer("PostKillPosition")
     ~ fadeIn(0.5)
 -> DONE
@@ -143,13 +146,13 @@ Player: Want to join to my room?
 //TODO: animation
 
 = fallback
-Space_CEO: You ran out of choces.
+fox: You ran out of choces.
 Meow.
 -> DONE
 
-VAR minister_war_interest = 0
+VAR bear_war_interest = 0
 
-=== MINISTER_WAR
+=== BEAR
 
 {
     - not INTRODUCTION: -> INTRODUCTION
@@ -160,7 +163,7 @@ VAR minister_war_interest = 0
 
 = INTRODUCTION
 Player: You have a strong presence.<br>What's bringing you here tonight?
-Minister: Flattery won't get you anywhere.<br>What is that you want?
+Bear: Flattery won't get you anywhere.<br>What is that you want?
 -> HUB
 
 = HUB
@@ -168,34 +171,34 @@ Minister: Flattery won't get you anywhere.<br>What is that you want?
     -> CHIT_CHAT_GUARD
 * What is your goal here at the fundraiser?
     -> CHIT_CHAT_FUNDRAISE
-* {minister_war_interest > 0} [Lure them]
+* {bear_war_interest > 0} [Lure them]
     -> LURE
 + Sorry. I have to go.
     -> DONE
 + -> fallback
 
 = CHIT_CHAT_GUARD
-Minister: I can't talk about my work, it is off limits.
-Minister: Why do you ask?
+Bear: I can't talk about my work, it is off limits.
+Bear: Why do you ask?
 * Was hoping to get a bodyguard myself, but then this is not the right place for it.
-    Minister: Yes, that is not a topic you should bring up out of the blue here.
-    ~ minister_war_interest--
+    Bear: Yes, that is not a topic you should bring up out of the blue here.
+    ~ bear_war_interest--
 * I was thinking of networking around security companies.
     Player: My next big investment will be in a bar chain across the city.<br>Hoped you could recommend me some services?
-    Minister: I have a few people I could ask.
+    Bear: I have a few people I could ask.
     Player: That would be great, thank you.
-    ~ minister_war_interest++
+    ~ bear_war_interest++
 - -> HUB
 
 = CHIT_CHAT_FUNDRAISE
-Minister: I care about the country's children.<br>You?
+Bear: I care about the country's children.<br>You?
 * I would like to help them too. I have big hopes in my next investment,<br>hope the masses see the potential as well.
-    ~ minister_war_interest++
+    ~ bear_war_interest++
 -> HUB
 
 = LURE
 Player: Why don't we continue this at your room?
-Minister: I agree that we continue this without the crowd watching.
+Bear: I agree that we continue this without the crowd watching.
 ~ fadeOut(0.5)
 Player: Imagine animations here.
 ~ killNpc("MinisterWar")
@@ -206,7 +209,7 @@ Player: Imagine animations here.
 //TODO: animation
 
 = fallback
-Minister: you ran out of choces.
+Bear: you ran out of choces.
 Meow.
 -> DONE
 //##################################################################################
@@ -214,15 +217,15 @@ Meow.
 === function getCurrentInterestLion() ===
 { current_mask:
     - "alien": 
-        ~ return owner_interest_alien
+        ~ return lion_interest_alien
     - else:
-        ~ return owner_interest_alien 
+        ~ return lion_interest_alien 
 }
 
 === function changeCurrentInterestLion(value)
 {
     - current_mask == "alien":
-        ~ owner_interest_alien += value
+        ~ lion_interest_alien += value
 } 
 
 // this is purely to make the errors go away in the Ink Player, will be overriden by unity, ignore
