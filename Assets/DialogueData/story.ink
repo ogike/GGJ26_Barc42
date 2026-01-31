@@ -123,7 +123,7 @@ Fox: It is VRM, have you heard of it before?
 * Isn't that an Italian brand? I might have heard of it, not sure.
     ~ changeCurrentInterestFox(-1)
     Fox: Hmpf, maybe you are not worth my time after all. 
-* French, isn't it? Camille's spring collection is refined, however I prefer the winter one where your dress is from.
+* French, isn't it? Camille's spring collection is refined.
     Fox: What a polished taste you have
     Fox: And the flattery is not lost on me darling~
     ~ changeCurrentInterestFox(1)
