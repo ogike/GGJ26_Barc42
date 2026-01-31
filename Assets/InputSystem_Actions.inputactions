@@ -566,7 +566,7 @@
                 {
                     "name": "",
                     "id": "7545e4dd-093f-48e2-b44c-57db4321e597",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -577,7 +577,7 @@
                 {
                     "name": "",
                     "id": "f8e15038-b27a-46e4-b7f6-7581e40aa900",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
