@@ -51,4 +51,16 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Killed: {npcName}");
         npc.SetActive(false);
     }
+
+    public void TeleportPlayer(string placeName)
+    {
+        GameObject place = GameObject.Find(placeName);
+        if (!place)
+        {
+            Debug.LogWarning($"Teleport place with name  {placeName} not found in scene!");
+            return;
+        }
+        
+        PlayerController.Instance.Teleport(place.transform.position);
+    }
 }

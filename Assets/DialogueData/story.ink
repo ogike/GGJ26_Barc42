@@ -7,6 +7,7 @@ EXTERNAL fadeIn(fadeInTime)
 EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 
 EXTERNAL killNpc(npcName)
+EXTERNAL teleportPlayer(placeName)
 
 VAR owner_interest = 0
 
@@ -55,6 +56,7 @@ Player: Why don't we continue this at your room?
 Owner: Of course! I trust you so much now!
 Player: Imagine animations here.
 ~ killNpc("Owner")
+~ teleportPlayer("PostKillPosition")
 -> DONE
 //TODO: fade out
 //TODO: animation
@@ -73,6 +75,7 @@ CEO: fuck them kids.
 * [Kill.]
     Player: Want to join to my room?
     ~ killNpc("SpaceCEO")
+    ~ teleportPlayer("PostKillPosition")
 
 - -> DONE
 
@@ -93,3 +96,6 @@ CEO: fuck them kids.
 
 === function killNpc(npcName) ===
 ~ return 0
+=== function teleportPlayer(placeName) ===
+~ return 0
+

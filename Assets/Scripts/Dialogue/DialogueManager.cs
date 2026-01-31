@@ -174,9 +174,15 @@ namespace Dialogue
                 StartCoroutine(PauseLines(time));
             });
             
+            
             currentStory.BindExternalFunction ("killNpc", (string npcName) => {
                 if(debugMode) Debug.Log($"InkDebug: Trying to kill {npcName}...");
                 GameManager.Instance.KillNpc(npcName);
+            });
+            
+            currentStory.BindExternalFunction ("teleportPlayer", (string placeName) => {
+                if(debugMode) Debug.Log($"InkDebug: Teleporting player to {placeName}...");
+                GameManager.Instance.TeleportPlayer(placeName);
             });
         }
         

@@ -217,4 +217,9 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("lookH", finalVec.x);
             animator.SetFloat("lookV", finalVec.y);
         }
+
+        public void Teleport(Vector3 position)
+        {
+            _rigidbody.position = position;
+        }
 }
