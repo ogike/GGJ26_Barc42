@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6767998461931560353}
   - component: {fileID: 8307288160086321192}
+  - component: {fileID: 4109064983832249540}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: NPC_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,6 +217,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4109064983832249540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570273628374807282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Components.NavMeshModifier
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8035030024401591928
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,4 +388,5 @@ MonoBehaviour:
     inkPath: NPC1
     monologue: 0
     talkingTag: NPCTest
+    portrait: {fileID: 0}
   visualCue: {fileID: 7937303120827302957}

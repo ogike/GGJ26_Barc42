@@ -1491,10 +1491,7 @@ PrefabInstance:
     - {fileID: 5459023456008159465, guid: a91ca4e8d350295488f17749bcca0dae, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 594881780189666947, guid: a91ca4e8d350295488f17749bcca0dae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2774938386085103777}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91ca4e8d350295488f17749bcca0dae, type: 3}
 --- !u!1 &2774938386085103776 stripped
 GameObject:
@@ -1649,6 +1646,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2486006209384872839, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3384201744956602244, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
       propertyPath: m_Name
       value: ScreenSpaceCanvas

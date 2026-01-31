@@ -76,4 +76,9 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("lookV", direction.y);
     }
 
+
+    public void Teleport(Vector3 position)
+    {
+        _trans.position = position;
+    }
 }
