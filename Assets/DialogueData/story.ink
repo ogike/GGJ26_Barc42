@@ -6,13 +6,18 @@ EXTERNAL fadeIn(fadeInTime)
 
 EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 
+EXTERNAL killNpc(npcName)
+EXTERNAL teleportPlayer(placeName)
+
 VAR owner_interest = 0
 
 === OWNER
 
 {
     - not INTRODUCTION: -> INTRODUCTION
-    - else: HUB
+    - else: 
+        Player: So...
+        -> HUB
 }
 
 = INTRODUCTION
@@ -27,7 +32,7 @@ Owner: Let's get to the point.<br>What do you want?
     -> CHIT_CHAT_LIQUOR
 * {owner_interest > 0} [Lure them]
     -> LURE
-* Sorry. I have to go.
++ Sorry. I have to go.
     -> DONE
 + -> fallback
 
@@ -49,7 +54,11 @@ Owner: Thank you!
 = LURE
 Player: Why don't we continue this at your room?
 Owner: Of course! I trust you so much now!
+~ fadeOut(0.5)
 Player: Imagine animations here.
+~ killNpc("Owner")
+~ teleportPlayer("PostKillPosition")
+~ fadeIn(0.5)
 -> DONE
 //TODO: fade out
 //TODO: animation
@@ -120,6 +129,22 @@ Space_CEO: You ran out of choces.
 Meow.
 -> DONE
 
+=== SPACE_CEO
+CEO: fuck them kids.
+
+* [Agree]
+    Player: So true! 
+* [Kill.]
+    Player: Want to join to my room?
+    ~ fadeOut(0.5)
+    Player: bite bite bite bite
+    Ceo: nooooooooooooo
+    ~ killNpc("SpaceCEO")
+    ~ teleportPlayer("PostKillPosition")
+    ~ fadeIn(0.5)
+- -> DONE
+
+
 //##################################################################################
 
 
@@ -133,3 +158,9 @@ Meow.
 
 === function wait(waitTime) ===
 ~ return 0
+
+=== function killNpc(npcName) ===
+~ return 0
+=== function teleportPlayer(placeName) ===
+~ return 0
+

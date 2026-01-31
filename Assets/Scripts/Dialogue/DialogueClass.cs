@@ -15,6 +15,7 @@ namespace Dialogue
         public bool monologue = false;
 
         public string talkingTag;
+        public Sprite portrait;
         
         private DialogueTrigger _npcTrigger;
         
@@ -29,6 +30,7 @@ namespace Dialogue
         public void Start()
         {
             DialogueManager.Instance.EnterDialogueMode(this);
+            DialogueUI.Instance.SetNpcPortrait(portrait);
         }
         
         public void Stop()

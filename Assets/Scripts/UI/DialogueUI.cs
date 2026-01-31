@@ -229,6 +229,16 @@ namespace UI
             playerChoiceBoxes[selectedChoice].ApplyStyle(choiceStyleSelected, tweening);
         }
 
+        public void SetPlayerPortrait(Sprite img)
+        {
+            playerPortrait.sprite = img;
+        }
+
+        public void SetNpcPortrait(Sprite img)
+        {
+            npcPortrait.sprite = img;
+        }
+
         public void ShowInteractionBlurb(string line)
         {
             if(DialogueManager.Instance.dialogueIsPlaying) return;
