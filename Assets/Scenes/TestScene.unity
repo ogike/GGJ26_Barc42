@@ -2066,6 +2066,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1169752884238763979, guid: 42dad3b62009f124994ff2d78fd41a1b, type: 3}
+      propertyPath: scrollRect
+      value: 
+      objectReference: {fileID: 345758329132309834}
+    - target: {fileID: 1169752884238763979, guid: 42dad3b62009f124994ff2d78fd41a1b, type: 3}
+      propertyPath: contentPanel
+      value: 
+      objectReference: {fileID: 2733021460643462411}
     - target: {fileID: 2733200726118649000, guid: 42dad3b62009f124994ff2d78fd41a1b, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2849,6 +2857,8 @@ MonoBehaviour:
     choiceSwitchTime: 0.2
     boxAppearTime: 0.35
     easeType: 4
+  scrollRect: {fileID: 345758329132309834}
+  contentPanel: {fileID: 5781611412265790687}
 --- !u!222 &4121357275740918434
 CanvasRenderer:
   m_ObjectHideFlags: 0
