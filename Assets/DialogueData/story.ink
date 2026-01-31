@@ -219,7 +219,7 @@ Meow.
 VAR goss = -> GOSSIP1
 === GOSSIPNPC1
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -231,7 +231,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC2
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -243,7 +243,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC3
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -255,7 +255,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC4
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -267,7 +267,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC5
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -279,7 +279,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC6
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -291,7 +291,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC7
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
@@ -303,7 +303,7 @@ VAR goss = -> GOSSIP1
 
 === GOSSIPNPC8
 {
-    - not CHOOSEGOSSIP: -> CHOOSEGOSSIP
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
         Gossiper: We should not draw more attention.
         -> DONE
