@@ -54,9 +54,11 @@ Owner: Thank you!
 = LURE
 Player: Why don't we continue this at your room?
 Owner: Of course! I trust you so much now!
+~ fadeOut(0.5)
 Player: Imagine animations here.
 ~ killNpc("Owner")
 ~ teleportPlayer("PostKillPosition")
+~ fadeIn(0.5)
 -> DONE
 //TODO: fade out
 //TODO: animation
@@ -74,9 +76,12 @@ CEO: fuck them kids.
     Player: So true! 
 * [Kill.]
     Player: Want to join to my room?
+    ~ fadeOut(0.5)
+    Player: bite bite bite bite
+    Ceo: nooooooooooooo
     ~ killNpc("SpaceCEO")
     ~ teleportPlayer("PostKillPosition")
-
+    ~ fadeIn(0.5)
 - -> DONE
 
 
