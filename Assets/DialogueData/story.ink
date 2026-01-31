@@ -19,6 +19,14 @@ NPCTest: Thank you!<br>Let's get to the point.<br>What do you want?
     NPCTest: W-What do you mean?
 * [You know me... The usual.]
     ~ npc1_interest += 2
+* [*stares*]
+    NPCTest: *leaves*.
+    ~ npc1_interest--
+* [Follow me and I'll show you.]
+    NPCTest: I don't think so.
+    ~ npc1_interest-=2
+* [Nothing.]
+    NPCTest: Uh.... sure.
 + -> fallback
 - NPCTest: Wait.
 What is this test for?
