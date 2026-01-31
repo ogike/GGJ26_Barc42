@@ -19,9 +19,12 @@ NPCTest: Thank you!<br>Let's get to the point.<br>What do you want?
     NPCTest: W-What do you mean?
 * [You know me... The usual.]
     ~ npc1_interest += 2
-
++ -> fallback
 - NPCTest: Wait.
 What is this test for?
+-> end
+
+= end
 
 {
     - npc1_interest > 0: 
@@ -30,7 +33,11 @@ What is this test for?
         You lost. meow.
 }
 Player: bye
+-> DONE
 
+= fallback
+NPCTest: you ran out of choces.
+Meow.
 -> DONE
 
 
