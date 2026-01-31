@@ -6,6 +6,8 @@ EXTERNAL fadeIn(fadeInTime)
 
 EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 
+EXTERNAL killNpc(npcName)
+
 VAR owner_interest = 0
 
 === OWNER
@@ -52,6 +54,7 @@ Owner: Thank you!
 Player: Why don't we continue this at your room?
 Owner: Of course! I trust you so much now!
 Player: Imagine animations here.
+~ killNpc("Owner")
 -> DONE
 //TODO: fade out
 //TODO: animation
@@ -64,8 +67,14 @@ Meow.
 
 === SPACE_CEO
 CEO: fuck them kids.
-Player: so true.
--> DONE
+
+* [Agree]
+    Player: So true! 
+* [Kill.]
+    Player: Want to join to my room?
+    ~ killNpc("SpaceCEO")
+
+- -> DONE
 
 
 //##################################################################################
@@ -80,4 +89,7 @@ Player: so true.
 ~ return 0
 
 === function wait(waitTime) ===
+~ return 0
+
+=== function killNpc(npcName) ===
 ~ return 0
