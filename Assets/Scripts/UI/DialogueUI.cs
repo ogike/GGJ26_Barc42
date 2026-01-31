@@ -176,6 +176,7 @@ namespace UI
                 playerChoiceBoxes.ForEach(box => box.Hide());
             }
 
+            dialoguePanel.SetActive(true);
             nonChoicePanel.SetActive(true);
             dialogueText.maxVisibleCharacters = 0;
             dialogueText.text = text;
@@ -187,6 +188,7 @@ namespace UI
             
             HideContinueIcon();
             playerChoiceBoxes.ForEach(box => box.Hide());
+            dialoguePanel.SetActive(true);
             nonChoicePanel.SetActive(true);
 
             

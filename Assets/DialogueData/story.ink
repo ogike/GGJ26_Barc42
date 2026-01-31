@@ -6,25 +6,31 @@ EXTERNAL fadeIn(fadeInTime)
 
 EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 
+VAR npc1_interest = 0
+
 === NPC1
-Anna: I really shouldn't have stayed up <br>all night reading about...
-What was that herb?
-Cowslip?
-More like Howsick if you know what <br>I... meawnmmmm...
-[...]
-A letter?
-Oh it's from Auntie!
-NPC: It reads, "Hello Sunshine,
-Today I'm starting my yearly winter getaway <br>and leaving the town for a few weeks.
-If you could hop on over every once in <br>a while to check on the indoor plants - 
-I would be eternally grateful.
-I know that you know the drill already, <br>but just to make sure,
-Feel free to take or eat or use anything.
-Anything, okay?
-If nothing will be missing from the pantry, <br>you can count on your demise.
-I'm serious! - Auntie"
-Anna: I think she drew the point home.
-[...]
+Player: What a lovely dress.<br>What's bringing you here tonight?
+NPCTest: Thank you!<br>Let's get to the point.<br>What do you want?
+* [Your blood.]
+    ~ npc1_interest++
+    NPCTest: Oh.... How intriguing.
+* [Your mask.]
+    ~ npc1_interest--
+    NPCTest: W-What do you mean?
+* [You know me... The usual.]
+    ~ npc1_interest += 2
+
+- NPCTest: Wait.
+What is this test for?
+
+{
+    - npc1_interest > 0: 
+        You won. Good job.
+    - else:
+        You lost. meow.
+}
+Player: bye
+
 -> DONE
 
 

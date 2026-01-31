@@ -28,8 +28,7 @@ namespace Dialogue
 
         public void Start()
         {
-            Debug.Log($"Starting dialogue at {inkPath}");
-            //DialogueManager.Instance.EnterDialogueMode(this);
+            DialogueManager.Instance.EnterDialogueMode(this);
         }
         
         public void Stop()

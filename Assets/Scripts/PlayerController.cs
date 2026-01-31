@@ -1,3 +1,4 @@
+using Dialogue;
 using UI;
 using UnityEngine;
 
@@ -60,9 +61,9 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        if(DialogueManager.Instance.dialogueIsPlaying) return;
         //if (PauseMenu.Instance.IsPaused) return;
-
-        //Do things that are always done first
+        
         UpdateCooldowns();
         
         Move();

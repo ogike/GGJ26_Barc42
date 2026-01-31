@@ -73,7 +73,7 @@ namespace Dialogue
 
         private void Start() 
         {
-            //_ui = DialogueUI.Instance;
+            _ui = DialogueUI.Instance;
             dialogueIsPlaying = false;
             
             currentStory = new Story(inkJson.text);
@@ -119,9 +119,8 @@ namespace Dialogue
 
             if (currentStory.currentChoices.Count > 0)
             {
-                //float xInput = UserInput.Instance.NonCameraRelativeMoveInput.y;
-                float xInput = 1;
-                
+                float xInput = -UserInput.Instance.MoveInput.y;
+
                 // Do not rapidly go thru choices if direction is held down
                 if (_switchedChoiceAlready && xInput == 0)
                 {
