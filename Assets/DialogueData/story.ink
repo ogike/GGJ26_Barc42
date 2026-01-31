@@ -111,6 +111,8 @@ Fox: What do you want from me?
     -> LURE
 * {getCurrentInterestFox > 3} The perfume you are wearing is exquisite.
     -> CHIT_CHAT_PERFUME
+* {getCurrentInterestFox > 4} Would you be interested in a proposal?
+    -> CHIT_CHAT_PROPOSE
 * Sorry. I have to go.
     -> DONE
 + -> fallback
@@ -149,6 +151,25 @@ Fox: Of course, what vision are you going for?
     Fox: Some fresh laundry then. I'm not well versed in subtle matters.
     ~ changeCurrentInterestFox(-1)
     
+- -> HUB
+
+= CHIT_CHAT_PROPOSE
+Fox: A marriage proposal? Might be too soon darling~
+* For that I'd choose a better place and time, don't worry. It's about a business.
+    Fox: Oh, do tell.
+    Player: I'd like to know more about some of your sources.
+    Player: If you know what I mean.
+    Fox: I understand you perfectly and clear.<br>Lend me some of your time then, if you don't mind.
+    ~ changeCurrentInterestFox(1)
+    Player: [I see her relax and ease into talking about all the alinments she can get<br>at the snap of her finger.]
+* That's not my style, I'd like to stay in my line. It's about a business.  
+    Fox: You are the uptight kind...
+    Fox: What is it?
+    Player: I'd like to know more about some of your sources.
+    Player: If you know what I mean.
+    Fox: I don't have much time, so I'll be brief.
+    Player: [She speedruns through her contacts, looking right through me.<br>I can't comprehend any of it, it's that fast]
+    ~ changeCurrentInterestFox(-1)
 - -> HUB
 
 = LURE
