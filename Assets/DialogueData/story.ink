@@ -20,7 +20,36 @@ VAR fox_interest_bear = 4
 VAR fox_interest_alien = -1
 
 VAR current_mask = "alien"
+VAR lion_mask_obtained = false
+VAR bear_mask_obtained = false
+VAR fox_mask_obtained = false
 
+
+=== MIRROR
+
+{
+    - lion_mask_obtained or bear_mask_obtained or fox_mask_obtained: -> CHOOSE_MASK
+    - else: -> NO_MASKS
+}
+
+= NO_MASKS
+Player: I'm getting bored of wearing this mask....<br>What if I could get a different one?
+-> DONE
+
+= CHOOSE_MASK
+Player: What a lovely selection of masks!<br>Which one should I wear?
+* {lion_mask_obtained} [Lion Mask]
+    ~ current_mask = "lion"
+    Player: A bold presence is what I need tonight.
+    -> DONE
+* {bear_mask_obtained} [Bear Mask]
+    ~ current_mask = "bear"
+    Player: A strong presence is what I need tonight.
+    -> DONE
+* {fox_mask_obtained} [Fox Mask]
+    ~ current_mask = "fox"
+    Player: A cunning presence is what I need tonight.
+    -> DONE
 
 
 === LION
