@@ -116,6 +116,10 @@ namespace UI
         [Header("Others")]
         private string _curInteractBlurb;
         private DialogueManager _manager;
+
+        private int _maxChoicesThatFit = 3;
+        public ScrollRect scrollRect;
+
         private void Awake()
         {
             if (Instance != null)
@@ -222,11 +226,16 @@ namespace UI
             }
         }
 
-        public void ChangeCoice(int selectedChoice)
+        public void ChangeChoice(int selectedChoice)
         {
             playerChoiceBoxes[_curChoice].ApplyStyle(choiceStyleNotSelected, tweening);
             _curChoice = selectedChoice;
             playerChoiceBoxes[selectedChoice].ApplyStyle(choiceStyleSelected, tweening);
+            
+            if (playerChoiceBoxes.Count > _maxChoicesThatFit)
+            {
+                scrollRect.verticalNormalizedPosition = 1 - (selectedChoice)/((float)(playerChoiceBoxes.Count) - 1.0f);
+            }
         }
 
         public void SetPlayerPortrait(Sprite img)
