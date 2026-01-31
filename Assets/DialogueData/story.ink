@@ -59,15 +59,6 @@ Owner: you ran out of choces.
 Meow.
 -> DONE
 
-// SPACE CEO
-/*
-base choices to talk abt:
-* You have a lovely dress, may I know what brand is this?
-    CEO: Hmmm, you have a good eye for these things, so I could share... It is VRM, have you heard of it before?
-    * 
-
-*/
-
 VAR space_ceo_interest = 0
 
 === CEO
