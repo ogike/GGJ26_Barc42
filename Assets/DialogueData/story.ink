@@ -86,7 +86,9 @@ VAR space_ceo_interest = 0
 
 = INTRODUCTION
 Player: What an alluring guest.<br>What's bringing you here tonight?
-Ceo: Better question:<br> what's bringing you here pretty boy?<br>What do you want from me?
+Ceo: Better question...
+Ceo: What's bringing you here pretty boy?
+Ceo: What do you want from me?
 -> HUB
 
 = HUB
