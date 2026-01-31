@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   mainCamera: {fileID: 0}
+  defaultPlayerMaskSprite: {fileID: 21300000, guid: b7b8ab43f3a93704c8fc28667f395ceb, type: 3}
 --- !u!114 &1169752884238763979
 MonoBehaviour:
   m_ObjectHideFlags: 0
