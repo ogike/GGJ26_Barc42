@@ -22,21 +22,6 @@ VAR fox_interest_alien = -1
 VAR current_mask = "alien"
 
 
-=== function getCurrentInterestLion() ===
-{ current_mask:
-    - "alien": 
-        ~ return lion_interest_alien
-    - else:
-        ~ return owner_interest_alien 
-}
-
-=== function changeCurrentInterestLion(value)
-{
-    - current_mask == "alien":
-        ~ owner_interest_alien += value
-} 
-
-VAR current_mask = "alien"
 
 === LION
 
@@ -57,14 +42,14 @@ Lion: Let's get to the point.<br>What do you want?
     -> CHIT_CHAT_FUNDING
 * [*stares*]
     Lion: *leaves*.
-    ~ lion_interest--
+    ~ changeCurrentInterestLion(-1)
     -> HUB
 * [Nothing.]
     Lion: Uh.... sure.
     -> HUB
 * What is your finest liquor?
     -> CHIT_CHAT_LIQUOR
-* {lion_interest > 0} [Lure them]
+* {getCurrentInterestLion > 0} [Lure them]
     -> LURE
 + Sorry. I have to go.
     -> DONE
@@ -73,16 +58,16 @@ Lion: Let's get to the point.<br>What do you want?
 = CHIT_CHAT_FUNDING
 Lion: Oh! You can leave a cheque at the receptionist!
 * That's too much work...
-    ~ lion_interest--
+    ~ changeCurrentInterestLion(-1)
 * Thank you! I will leave a gazillion dollars.
     The children of the future war need it.
-    ~ lion_interest++
+    ~ changeCurrentInterestLion(1)
 - -> HUB
 
 = CHIT_CHAT_LIQUOR
 I bet your establishment has some good wine.
 Lion: Thank you! 
-~ lion_interest++
+~ changeCurrentInterestLion(1)
 -> HUB
 
 = LURE
@@ -102,10 +87,6 @@ Lion: you ran out of choces.
 Meow.
 -> DONE
 
-VAR fox_interest = 0
-VAR fox_interest_lion = 1
-VAR fox_interest_alien = -1
-VAR fox_interest_bear = 4
 
 === FOX
 
@@ -126,7 +107,7 @@ Fox: What do you want from me?
     -> CHIT_CHAT_FLATTER
 * Did you by any chance see any "Carmen" here?
     -> CHIT_CHAT_DRUGS
-* {fox_interest > 6} [Lure them]
+* {getCurrentInterestFox > 6} [Lure them]
     -> LURE
 * Sorry. I have to go.
     -> DONE
@@ -136,12 +117,12 @@ Fox: What do you want from me?
 Fox: Hmmm, you have a good eye for these things, so I could share... 
 Fox: It is VRM, have you heard of it before?
 * Isn't that an Italian brand? I might have heard of it, not sure.
-    ~ fox_interest--
+    ~ changeCurrentInterestFox(-1)
     Fox: Hmpf, maybe you are not worth my time after all. 
 * French, isn't it? Camille's spring collection is refined, however I prefer the winter one where your dress is from.
     Fox: What a polished taste you have
     Fox: And the flattery is not lost on me darling~
-    ~ fox_interest++
+    ~ changeCurrentInterestFox(1)
 - -> HUB
 
 = CHIT_CHAT_DRUGS
@@ -149,10 +130,10 @@ Fox: Not yet, would you be interested in finding her together?
 * I was just checking that nobody is using these kinds of drugs here.
     Player: Sorry for the assumption.
     Fox: ...
-    ~ fox_interest--
+    ~ changeCurrentInterestFox(-1)
 * Of course, with your beautiful face I'm certain we will find it fast.
     Fox: I will lead the way.
-    ~ fox_interest++
+    ~ changeCurrentInterestFox(1)
 - -> HUB
 
 = LURE
@@ -236,17 +217,58 @@ Meow.
 
 === function getCurrentInterestLion() ===
 { current_mask:
-    - "alien": 
-        ~ return lion_interest_alien
+    - "bear": 
+        ~ return lion_interest_bear
+    - "fox": 
+        ~ return lion_interest_fox
     - else:
         ~ return lion_interest_alien 
 }
-
 === function changeCurrentInterestLion(value)
-{
-    - current_mask == "alien":
+{ current_mask:
+    - "bear": 
+        ~ lion_interest_bear += value
+    - "fox": 
+        ~ lion_interest_fox += value
+    - else:
         ~ lion_interest_alien += value
-} 
+}
+=== function getCurrentInterestBear() ===
+{ current_mask:
+    - "lion": 
+        ~ return bear_interest_lion
+    - "fox": 
+        ~ return bear_interest_fox
+    - else:
+        ~ return bear_interest_alien 
+}
+=== function changeCurrentInterestBear(value)
+{ current_mask:
+    - "lion": 
+        ~ bear_interest_lion += value
+    - "fox": 
+        ~ bear_interest_fox += value
+    - else:
+        ~ bear_interest_alien += value
+}
+=== function getCurrentInterestFox() ===
+{ current_mask:
+    - "lion": 
+        ~ return fox_interest_lion
+    - "bear": 
+        ~ return fox_interest_bear
+    - else:
+        ~ return fox_interest_alien 
+}
+=== function changeCurrentInterestFox(value)
+{ current_mask:
+    - "lion": 
+        ~ fox_interest_lion += value
+    - "bear": 
+        ~ fox_interest_bear += value
+    - else:
+        ~ fox_interest_alien += value
+}
 
 // this is purely to make the errors go away in the Ink Player, will be overriden by unity, ignore
 === function fadeOutSequence(x,y,z) ===
