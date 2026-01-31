@@ -79,13 +79,13 @@ VAR space_ceo_interest = 0
 
 = INTRODUCTION
 Player: What an alluring guest.<br>What's bringing you here tonight?
-Ceo: Let's get to the point pretty boy.<br>What do you want?
+Ceo: Better question:<br> what's bringing you here pretty boy?<br>What do you want from me?
 -> HUB
 
 = HUB
-* You have a lovely dress, may I know what brand is this?
+* You have a lovely dress, may I know what brand is it?
     -> CHIT_CHAT_FLATTER
-* Did you by any chance see Carmen here?
+* Did you by any chance see any "Carmen" here?
     -> CHIT_CHAT_DRUGS
 * {space_ceo_interest > 0} [Lure them]
     -> LURE
@@ -96,16 +96,17 @@ Ceo: Let's get to the point pretty boy.<br>What do you want?
 = CHIT_CHAT_FLATTER
 Ceo: Hmmm, you have a good eye for these things, so I could share... 
 Ceo: It is VRM, have you heard of it before?
-* Isn't that an Italian brand? I might have heard of it.
+* Isn't that an Italian brand? I might have heard of it, not sure.
     ~ space_ceo_interest--
     Ceo: Hmpf, maybe you are not worth my time after all. 
-* French, isn't it? Camille's spring collection is refined, however I prefer the winter one your dress is from.
-    Ceo: What a polished taste you have, and the flattery is not lost on me~
+* French, isn't it? Camille's spring collection is refined, however I prefer the winter one where your dress is from.
+    Ceo: What a polished taste you have
+    Ceo: And the flattery is not lost on me darling~
     ~ space_ceo_interest++
 - -> HUB
 
 = CHIT_CHAT_DRUGS
-Ceo: Not yet, would you be interested to finding her together? 
+Ceo: Not yet, would you be interested in finding her together? 
 * I was just checking that nobody is using these kinds of drugs here.
     Player: Sorry for the assumption.
     Ceo: ...
