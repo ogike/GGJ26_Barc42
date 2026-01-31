@@ -222,7 +222,7 @@ namespace UI
             }
         }
 
-        public void ChangeCoice(int selectedChoice)
+        public void ChangeChoice(int selectedChoice)
         {
             playerChoiceBoxes[_curChoice].ApplyStyle(choiceStyleNotSelected, tweening);
             _curChoice = selectedChoice;
