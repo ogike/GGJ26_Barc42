@@ -1151,7 +1151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6028685551470543645, guid: ba28411bdb50ec74eb1d4fc3de2b4b26, type: 3}
       propertyPath: m_Name
-      value: SpaceCEO
+      value: Fox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1190,7 +1190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 171734427215262493, guid: 50beda23e001b794db73de1496c28550, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 171734427215262493, guid: 50beda23e001b794db73de1496c28550, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1222,7 +1222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7927168507433016398, guid: 50beda23e001b794db73de1496c28550, type: 3}
       propertyPath: m_Name
-      value: Owner
+      value: Lion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
