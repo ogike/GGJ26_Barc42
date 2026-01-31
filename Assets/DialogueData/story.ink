@@ -6,37 +6,56 @@ EXTERNAL fadeIn(fadeInTime)
 
 EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 
-VAR npc1_interest = 0
+VAR owner_interest = 0
 
-=== NPC1
-Player: What a lovely dress.<br>What's bringing you here tonight?
-NPCTest: Thank you!<br>Let's get to the point.<br>What do you want?
-* [Your blood.]
-    ~ npc1_interest++
-    NPCTest: Oh.... How intriguing.
-* [Your mask.]
-    ~ npc1_interest--
-    NPCTest: W-What do you mean?
-* [You know me... The usual.]
-    ~ npc1_interest += 2
-+ -> fallback
-- NPCTest: Wait.
-What is this test for?
--> end
-
-= end
+=== OWNER
 
 {
-    - npc1_interest > 0: 
-        You won. Good job.
-    - else:
-        You lost. meow.
+    - not INTRODUCTION: -> INTRODUCTION
+    - else: HUB
 }
-Player: bye
+
+= INTRODUCTION
+Player: What a lovely dress.<br>What's bringing you here tonight?
+Owner: Let's get to the point.<br>What do you want?
+-> HUB
+
+= HUB
+* How can I join the funding?
+    -> CHIT_CHAT_FUNDING
+* What is your finest liquor?
+    -> CHIT_CHAT_LIQUOR
+* {owner_interest > 0} [Lure them]
+    -> LURE
+* Sorry. I have to go.
+    -> DONE
++ -> fallback
+
+= CHIT_CHAT_FUNDING
+Owner: Oh! You can leave a cheque at the receptionist!
+* That's too much work...
+    ~ owner_interest--
+* Thank you! I will leave a gazillion dollars.
+    The children of the future war need it.
+    ~ owner_interest++
+- -> HUB
+
+= CHIT_CHAT_LIQUOR
+I bet your establishment has some good wine.
+Owner: Thank you! 
+~ owner_interest++
+-> HUB
+
+= LURE
+Player: Why don't we continue this at your room?
+Owner: Of course! I trust you so much now!
+Player: Imagine animations here.
 -> DONE
+//TODO: fade out
+//TODO: animation
 
 = fallback
-NPCTest: you ran out of choces.
+Owner: you ran out of choces.
 Meow.
 -> DONE
 
