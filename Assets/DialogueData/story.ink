@@ -70,7 +70,7 @@ Meow.
 
 VAR space_ceo_interest = 0
 
-=== CEO
+=== SPACE_CEO
 
 {
     - not INTRODUCTION: -> INTRODUCTION
@@ -79,7 +79,7 @@ VAR space_ceo_interest = 0
 
 = INTRODUCTION
 Player: What an alluring guest.<br>What's bringing you here tonight?
-Space_CEO: Let's get to the point pretty boy.<br>What do you want?
+Ceo: Let's get to the point pretty boy.<br>What do you want?
 -> HUB
 
 = HUB
@@ -94,32 +94,35 @@ Space_CEO: Let's get to the point pretty boy.<br>What do you want?
 + -> fallback
 
 = CHIT_CHAT_FLATTER
-Space_CEO: Hmmm, you have a good eye for these things, so I could share... 
-Space_CEO: It is VRM, have you heard of it before?
+Ceo: Hmmm, you have a good eye for these things, so I could share... 
+Ceo: It is VRM, have you heard of it before?
 * Isn't that an Italian brand? I might have heard of it.
     ~ space_ceo_interest--
-    Space_CEO: Hmpf, maybe you are not worth my time after all. 
+    Ceo: Hmpf, maybe you are not worth my time after all. 
 * French, isn't it? Camille's spring collection is refined, however I prefer the winter one your dress is from.
-    Space_CEO: What a polished taste you have, and the flattery is not lost on me~
+    Ceo: What a polished taste you have, and the flattery is not lost on me~
     ~ space_ceo_interest++
 - -> HUB
 
 = CHIT_CHAT_DRUGS
-Space_CEO: Not yet, would you be interested to finding her together? 
+Ceo: Not yet, would you be interested to finding her together? 
 * I was just checking that nobody is using these kinds of drugs here.
     Player: Sorry for the assumption.
-    Space_CEO: ...
+    Ceo: ...
     ~ space_ceo_interest--
 * Of course, with your beautiful face I'm certain we will find it fast.
-    Space_CEO: I will lead the way.
+    Ceo: I will lead the way.
     ~ space_ceo_interest++
 - -> HUB
 
 = LURE
-Player: Why don't we continue this at your room?
-Player: I could use some guidance under your hands.
-Space_CEO: With fingers like that I'm sure you'll be a fast learner.
-Player: Imagine lure animations here.
+Player: Want to join to my room?
+    ~ fadeOut(0.5)
+    Player: bite bite bite bite
+    Ceo: nooooooooooooo
+    ~ killNpc("SpaceCEO")
+    ~ teleportPlayer("PostKillPosition")
+    ~ fadeIn(0.5)
 -> DONE
 //TODO: fade out
 //TODO: animation
@@ -128,22 +131,6 @@ Player: Imagine lure animations here.
 Space_CEO: You ran out of choces.
 Meow.
 -> DONE
-
-=== SPACE_CEO
-CEO: fuck them kids.
-
-* [Agree]
-    Player: So true! 
-* [Kill.]
-    Player: Want to join to my room?
-    ~ fadeOut(0.5)
-    Player: bite bite bite bite
-    Ceo: nooooooooooooo
-    ~ killNpc("SpaceCEO")
-    ~ teleportPlayer("PostKillPosition")
-    ~ fadeIn(0.5)
-- -> DONE
-
 
 //##################################################################################
 
