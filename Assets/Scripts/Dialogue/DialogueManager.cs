@@ -443,7 +443,7 @@ namespace Dialogue
         {
             if(currentStory.currentChoices.Count == 0) return;
             
-            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 2);
+            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 4);
             
             _currentChoiceIndex++;
             if (_currentChoiceIndex > maxChoiceIndex)
@@ -453,14 +453,14 @@ namespace Dialogue
                                      + ": " + currentStory.currentChoices[_currentChoiceIndex].text);
 
             
-            _ui.ChangeCoice(_currentChoiceIndex);
+            _ui.ChangeChoice(_currentChoiceIndex);
         }
 
         public void PreviousChoice()
         {
             if(currentStory.currentChoices.Count == 0) return;
             
-            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 2);
+            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 4);
 
             _currentChoiceIndex--;
             if (_currentChoiceIndex < 0)
@@ -470,7 +470,7 @@ namespace Dialogue
                                      + ": " + currentStory.currentChoices[_currentChoiceIndex].text);
 
 
-            _ui.ChangeCoice(_currentChoiceIndex);
+            _ui.ChangeChoice(_currentChoiceIndex);
         }
 
         public Ink.Runtime.Object GetVariableState(string variableName) 
