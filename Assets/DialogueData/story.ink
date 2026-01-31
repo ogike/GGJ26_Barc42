@@ -12,7 +12,9 @@ VAR owner_interest = 0
 
 {
     - not INTRODUCTION: -> INTRODUCTION
-    - else: HUB
+    - else: 
+        Player: So...
+        -> HUB
 }
 
 = INTRODUCTION
@@ -27,7 +29,7 @@ Owner: Let's get to the point.<br>What do you want?
     -> CHIT_CHAT_LIQUOR
 * {owner_interest > 0} [Lure them]
     -> LURE
-* Sorry. I have to go.
++ Sorry. I have to go.
     -> DONE
 + -> fallback
 
@@ -57,6 +59,12 @@ Player: Imagine animations here.
 = fallback
 Owner: you ran out of choces.
 Meow.
+-> DONE
+
+
+=== SPACE_CEO
+CEO: fuck them kids.
+Player: so true.
 -> DONE
 
 
