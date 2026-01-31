@@ -109,6 +109,8 @@ Fox: What do you want from me?
     -> CHIT_CHAT_DRUGS
 * {getCurrentInterestFox > 6} [Lure them]
     -> LURE
+* {getCurrentInterestFox > 3} The perfume you are wearing is exquisite.
+    -> CHIT_CHAT_PERFUME
 * Sorry. I have to go.
     -> DONE
 + -> fallback
@@ -134,6 +136,19 @@ Fox: Not yet, would you be interested in finding her together?
 * Of course, with your beautiful face I'm certain we will find it fast.
     Fox: I will lead the way.
     ~ changeCurrentInterestFox(1)
+- -> HUB
+
+= CHIT_CHAT_PERFUME
+Player: Could you help out an ordinary guy like myself,<br>to choose a good cologne?
+Fox: Of course, what vision are you going for?
+* What scent would make a woman like you swoon?
+    Fox: What a sly question. I'd definitely go for something forest and smokey fragrance.
+    ~ changeCurrentInterestFox(1)
+* I don't want to stand out too much.
+    Fox: That's no fun. But to answer your question -
+    Fox: Some fresh laundry then. I'm not well versed in subtle matters.
+    ~ changeCurrentInterestFox(-1)
+    
 - -> HUB
 
 = LURE
