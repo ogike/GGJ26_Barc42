@@ -1,6 +1,7 @@
 using Dialogue;
 using UI;
 using UnityEngine;
+using Unity.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private Transform _trans;
     private Rigidbody2D _rigidbody;
     private CircleCollider2D _collider;
+    private UnityEngine.AI.NavMeshAgent _navMeshAgent;
     
     private float _floatingTolerance = 0.001f;
     private Vector2 _last4WayDir;
@@ -53,6 +55,10 @@ public class PlayerController : MonoBehaviour
         _trans = transform;
         _collider = GetComponent<CircleCollider2D>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis = false;
 
         _isMoving = false;
         _timeSinceLastMove = 0;
@@ -72,6 +78,18 @@ public class PlayerController : MonoBehaviour
         {
             UpdateDeacceleration();
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            SetTargetPosition();
+        }
+    }
+
+    private void SetTargetPosition()
+    {
+        Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPos.z = 0;
+        _navMeshAgent.SetDestination(targetPos);
     }
 
     private void Move()
