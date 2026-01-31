@@ -1140,38 +1140,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 594881780189666947, guid: a91ca4e8d350295488f17749bcca0dae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2774938386085103777}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a91ca4e8d350295488f17749bcca0dae, type: 3}
---- !u!1 &2774938386085103776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 594881780189666947, guid: a91ca4e8d350295488f17749bcca0dae, type: 3}
-  m_PrefabInstance: {fileID: 2774938386085103775}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &2774938386085103777
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2774938386085103776}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &2794425515793461460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1298,6 +1268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2486006209384872839, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3384201744956602244, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
       propertyPath: m_Name
       value: ScreenSpaceCanvas
