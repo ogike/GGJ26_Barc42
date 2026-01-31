@@ -119,26 +119,13 @@ namespace Dialogue
 
             if (currentStory.currentChoices.Count > 0)
             {
-                float xInput = UserInput.Instance.MoveInput.y;
-
-                // Do not rapidly go thru choices if direction is held down
-                if (_switchedChoiceAlready && xInput == 0)
+                if (UserInput.Instance.DialoguePrevChoicePressedThisFrame)
                 {
-                    _switchedChoiceAlready = false;
+                    PreviousChoice();
                 }
-                
-                if (!_switchedChoiceAlready)
+                else if (UserInput.Instance.DialogueNextChoicePressedThisFrame)
                 {
-                    if (Math.Abs(xInput - 1) < 0.1f)
-                    {
-                        PreviousChoice();
-                        _switchedChoiceAlready = true;
-                    }
-                    else if (Math.Abs(xInput - (-1)) < 0.1f)
-                    {
-                        NextChoice();
-                        _switchedChoiceAlready = true;
-                    }
+                    NextChoice();
                 }
             }
         }

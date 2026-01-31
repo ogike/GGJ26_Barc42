@@ -70,87 +70,26 @@ public class PlayerController : MonoBehaviour
         if(DialogueManager.Instance.dialogueIsPlaying) return;
         //if (PauseMenu.Instance.IsPaused) return;
         
-        UpdateCooldowns();
-        
-        // Move();
-        //
-        // if (!_isMoving && _timeSinceLastMove < deaccelerationTime)
-        // {
-        //     UpdateDeacceleration();
-        // }
-
-        if (Input.GetMouseButton(0))
-        {
-            SetTargetPosition();
-        }
-    }
-
-    private void SetTargetPosition()
-    {
-        Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        targetPos.z = 0;
-        _navMeshAgent.SetDestination(targetPos);
-        Debug.Log(targetPos);
+        Move();
     }
 
     private void Move()
     {
-        //get basic input dir
-        float inputH = UserInput.Instance.MoveInput.x;
-        float inputV = UserInput.Instance.MoveInput.y;
-
-        //reset movement if no input
-        if (inputH == 0 && inputV == 0)
+        if (UserInput.Instance.GoToPointPressedThisFrame)
         {
-            if (_isMoving)
-            {
-                _isMoving = false;
-                _timeSinceLastMove = 0;
-                _timeSinceLastStop = 0;
-                    
-                animator.SetBool("isMoving", false);
-            }
-
-            return; // We dont move
-        }
-
-        // Start moving if we havent
-        if (!_isMoving)
-        {
+            _navMeshAgent.SetDestination(UserInput.Instance.MoveTarget);
             _isMoving = true;
             _timeSinceLastStop = 0;
             _timeSinceLastMove = 0;
             animator.SetBool("isMoving", true);
         }
-            
-        UpdateMoveRotation(inputH, inputV);
-        
-        //move if there is input
-        float finalSpeed = baseSpeed;
-            
-        if (_timeSinceLastStop < accelerationTime)
-        {
-            float percent = _timeSinceLastStop / accelerationTime;
-            finalSpeed *= accelerationCurve.Evaluate(percent);
-        }
+        Debug.Log(_navMeshAgent.steeringTarget);
 
-        Vector2 newFullForce = new Vector2(inputH, inputV) * finalSpeed;
-        // _rigidbody.AddForce(newFullForce);
+        // Start moving if we havent
+        // UpdateMoveRotation(inputH, inputV);
         
         // This is overwriting the full velocity of the Rigidbody system. This is not the best, but gives us the most control.
-        _rigidbody.linearVelocity = newFullForce;
-    }
-    
-    private void UpdateCooldowns()
-    {
-        if (_isMoving)
-        {
-            _timeSinceLastStop += Time.deltaTime;
-        }
-        else
-        {
-            _timeSinceLastMove += Time.deltaTime;
-        }
+        // _rigidbody.linearVelocity = newFullForce;
     }
     
     private void UpdateMoveRotation(float inputH, float inputV)
@@ -193,22 +132,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-        private void UpdateDeacceleration()
-        {
-            float finalSpeed = baseSpeed;
-
-            if (_timeSinceLastMove < deaccelerationTime)
-            {
-                float percent = _timeSinceLastMove / deaccelerationTime;
-                finalSpeed *= deaccelerationCurve.Evaluate(percent);
-            }
-            
-            Vector2 newFullForce = new Vector2(lastInputH, lastInputV) * finalSpeed;
-            // _rigidbody.AddForce(newFullForce);
-        
-            // This is overwriting the full velocity of the Rigidbody system. This is not the best, but gives us the most control.
-            _rigidbody.linearVelocity = newFullForce;
-        }
         
         public void RecenterToSpritePivot()
         {
