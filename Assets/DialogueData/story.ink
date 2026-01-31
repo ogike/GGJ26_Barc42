@@ -28,6 +28,13 @@ Owner: Let's get to the point.<br>What do you want?
 = HUB
 * How can I join the funding?
     -> CHIT_CHAT_FUNDING
+* [*stares*]
+    Owner: *leaves*.
+    ~ owner_interest--
+    -> HUB
+* [Nothing.]
+    Owner: Uh.... sure.
+    -> HUB
 * What is your finest liquor?
     -> CHIT_CHAT_LIQUOR
 * {owner_interest > 0} [Lure them]

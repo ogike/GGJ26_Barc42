@@ -119,7 +119,7 @@ namespace Dialogue
 
             if (currentStory.currentChoices.Count > 0)
             {
-                float xInput = -UserInput.Instance.MoveInput.y;
+                float xInput = UserInput.Instance.MoveInput.y;
 
                 // Do not rapidly go thru choices if direction is held down
                 if (_switchedChoiceAlready && xInput == 0)
@@ -467,7 +467,7 @@ namespace Dialogue
         {
             if(currentStory.currentChoices.Count == 0) return;
             
-            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 2);
+            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 4);
             
             _currentChoiceIndex++;
             if (_currentChoiceIndex > maxChoiceIndex)
@@ -477,14 +477,14 @@ namespace Dialogue
                                      + ": " + currentStory.currentChoices[_currentChoiceIndex].text);
 
             
-            _ui.ChangeCoice(_currentChoiceIndex);
+            _ui.ChangeChoice(_currentChoiceIndex);
         }
 
         public void PreviousChoice()
         {
             if(currentStory.currentChoices.Count == 0) return;
             
-            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 2);
+            int maxChoiceIndex = Math.Min(currentStory.currentChoices.Count-1, 4);
 
             _currentChoiceIndex--;
             if (_currentChoiceIndex < 0)
@@ -494,7 +494,7 @@ namespace Dialogue
                                      + ": " + currentStory.currentChoices[_currentChoiceIndex].text);
 
 
-            _ui.ChangeCoice(_currentChoiceIndex);
+            _ui.ChangeChoice(_currentChoiceIndex);
         }
 
         public Ink.Runtime.Object GetVariableState(string variableName) 
