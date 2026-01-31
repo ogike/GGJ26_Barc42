@@ -1,4 +1,5 @@
 using System;
+using UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     
     public Transform mainCameraTransform { get; private set; }
     public Camera mainCamera;
+
+    public Sprite defaultPlayerMaskSprite;
 
     private void Awake()
     {
@@ -18,5 +21,10 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         mainCameraTransform = mainCamera.transform;
+    }
+
+    private void Start()
+    {
+        DialogueUI.Instance.SetPlayerPortrait(defaultPlayerMaskSprite);
     }
 }
