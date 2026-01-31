@@ -133,6 +133,68 @@ Space_CEO: You ran out of choces.
 Meow.
 -> DONE
 
+VAR minister_war_interest = 0
+
+=== MINISTER_WAR
+
+{
+    - not INTRODUCTION: -> INTRODUCTION
+    - else: 
+        Player: So...
+        -> HUB
+}
+
+= INTRODUCTION
+Player: You have a strong presence.<br>What's bringing you here tonight?
+Minister: Flattery won't get you anywhere.<br>What is that you want?
+-> HUB
+
+= HUB
+* Are you the bodyguard here?
+    -> CHIT_CHAT_GUARD
+* What is your goal here at the fundraiser?
+    -> CHIT_CHAT_FUNDRAISE
+* {minister_war_interest > 0} [Lure them]
+    -> LURE
++ Sorry. I have to go.
+    -> DONE
++ -> fallback
+
+= CHIT_CHAT_GUARD
+Minister: I can't talk about my work, it is off limits.
+Minister: Why do you ask?
+* Was hoping to get a bodyguard myself, but then this is not the right place for it.
+    Minister: Yes, that is not a topic you should bring up out of the blue here.
+    ~ minister_war_interest--
+* I was thinking of networking around security companies.
+    Player: My next big investment will be in a bar chain across the city.<br>Hoped you could recommend me some services?
+    Minister: I have a few people I could ask.
+    Player: That would be great, thank you.
+    ~ minister_war_interest++
+- -> HUB
+
+= CHIT_CHAT_FUNDRAISE
+Minister: I care about the country's children.<br>You?
+* I would like to help them too. I have big hopes in my next investment,<br>hope the masses see the potential as well.
+    ~ minister_war_interest++
+-> HUB
+
+= LURE
+Player: Why don't we continue this at your room?
+Minister: I agree that we continue this without the crowd watching.
+~ fadeOut(0.5)
+Player: Imagine animations here.
+~ killNpc("MinisterWar")
+~ teleportPlayer("PostKillPosition")
+~ fadeIn(0.5)
+-> DONE
+//TODO: fade out
+//TODO: animation
+
+= fallback
+Minister: you ran out of choces.
+Meow.
+-> DONE
 //##################################################################################
 
 
