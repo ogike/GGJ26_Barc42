@@ -1591,6 +1591,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenSpaceCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3425784122996090148, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425784122996090148, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -380
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150699107408924889, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150699107408924889, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -380
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720211218988130852, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720211218988130852, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -380
+      objectReference: {fileID: 0}
     - target: {fileID: 8512755163581607612, guid: 7fc7e731aa3570140b351df526214fc4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
