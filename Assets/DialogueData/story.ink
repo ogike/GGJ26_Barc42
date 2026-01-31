@@ -177,7 +177,7 @@ Player: Want to join to my room?
     ~ fadeOut(0.5)
     Player: bite bite bite bite
     Fox: nooooooooooooo
-    ~ killNpc("SpaceFox")
+    ~ killNpc("Fox")
     ~ teleportPlayer("PostKillPosition")
     ~ fadeIn(0.5)
 - -> DONE
@@ -238,7 +238,7 @@ Player: Why don't we continue this at your room?
 Bear: I agree that we continue this without the crowd watching.
 ~ fadeOut(0.5)
 Player: Imagine animations here.
-~ killNpc("MinisterWar")
+~ killNpc("Bear")
 ~ teleportPlayer("PostKillPosition")
 ~ fadeIn(0.5)
 -> DONE
