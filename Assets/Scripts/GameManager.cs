@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Dialogue;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Utils;
 
 public class GameManager : MonoBehaviour
 {
@@ -101,5 +104,18 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Opening Code Door via GameManager");
         codeDoor.Open();
+    }
+
+    public void GoToMainMenu()
+    {
+        float duration = FadeToBlack.Instance.defaultFadeOutTime;
+        FadeToBlack.Instance.FadeOut(duration);
+        StartCoroutine(StartMenuSceneWithDelay(duration));
+    }
+
+    public IEnumerator StartMenuSceneWithDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        SceneManager.LoadScene(0);
     }
 }
