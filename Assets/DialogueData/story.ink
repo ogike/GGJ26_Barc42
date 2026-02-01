@@ -301,10 +301,10 @@ Bear: Flattery won't get you anywhere. What is it that you want?
 + -> fallback
 
 = CHIT_CHAT_GUARD
-Bear: I don't talk about work, it is often classified.
+Bear: I won't talk about work here, it is often classified.
 Bear: Why do you ask?
 * Was hoping to get a bodyguard myself, but then this is not the right place for it.
-    Bear: Yes, that is not a topic you should bring up out of the blue here.
+    Bear: If you know it is not the right place, why are you asking?
     ~ changeCurrentInterestBear(-1)
 * I was hoping to meet people involved in the security industry.
     Player: My next big investment will be in a bar chain across the city. I was hoping you could recommend some services to me.
@@ -317,7 +317,7 @@ Bear: Why do you ask?
 Bear: I care about the country's children. You?
 * I would like to help them too. I have big hopes in my next investment, hope the masses see the potential as well.
     ~ changeCurrentInterestBear(1)
-* I was hoping to find some investors.
+* I was hoping to make some new contacts.
     Bear: Hmm.
 - -> HUB
 
@@ -337,7 +337,7 @@ Player: Ahhh, I feel so much more powerful in tihs mask.
 //TODO: animation
 
 = fallback
-Bear: you ran out of choces.
+Bear: you ran out of choices.
 Meow.
 -> DONE
 //##################################################################################
