@@ -58,6 +58,7 @@ namespace Dialogue
             dialogue.Start();
             // animator.SetBool("isTalking", true);
             //TODO: audio
+            PlayerController.Instance.StopMoving();
             // SfxManager.Instance.PlayAudio(SfxManager.Instance.interactSound);
             // RumbleManager.Instance.AddNewImpulse(RumbleManager.Instance.dialogueProgressRumble);
         }
