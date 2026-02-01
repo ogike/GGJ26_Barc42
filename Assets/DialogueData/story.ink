@@ -10,6 +10,8 @@ EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 EXTERNAL changeMask(maskName)
 
+EXTERNAL openDoor()
+
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
 VAR lion_interest_alien = -1
@@ -25,6 +27,30 @@ VAR lion_mask_obtained = false
 VAR bear_mask_obtained = false
 VAR fox_mask_obtained = false
 
+VAR knows_door_code = false
+
+=== CODE_GIVER
+Code giver: Why hello there! Just shout "potato" at the door and they'll let you in.
+~ knows_door_code = true
+-> DONE
+
+=== DOOR
+???: Halt! What's the password?
+{
+    - knows_door_code: 
+        Player: Potato.
+        ???: Ah, welcome in!
+        ~ openDoor()
+        -> DONE
+    - else: 
+        Player: Uh... password?
+        ???: ...
+        ???: Did you really think we'd choose such a dumb one?
+        ???: Go away!
+        -> DONE
+}
+
+//-> GOSSIPNPC1
 
 === MIRROR
 
@@ -159,7 +185,7 @@ Fox: Oh, I would ask the same of you, you pretty thing.
 -> HUB
 
 = HUB
-* You have a lovely dress, may I know what brand is it?
+* That is a splendid dress, where did you get it?
     -> CHIT_CHAT_FLATTER
 * Did you by any chance see any "Carmen" here?
     -> CHIT_CHAT_DRUGS
@@ -174,13 +200,13 @@ Fox: Oh, I would ask the same of you, you pretty thing.
 + -> fallback
 
 = CHIT_CHAT_FLATTER
-Fox: Hmmm, you have a good eye for these things, so I could share... 
+Fox: Ah, you have a good eye... 
 Fox: It is VRM, have you heard of it before?
 * Isn't that an Italian brand? I might have heard of it, not sure.
     ~ changeCurrentInterestFox(-1)
     Fox: Hmpf, maybe you are not worth my time after all. 
-* French, isn't it? Camille's spring collection is refined, however I prefer the winter one where your dress is from.
-    Fox: What a polished taste you have
+* French, isn't it? Camille's spring collection is refined, however I prefer her winter one. That is where your dress is from, if I am not mistaken.
+    Fox: My, what a polished taste you have.
     Fox: And the flattery is not lost on me darling~
     ~ changeCurrentInterestFox(1)
 - -> HUB
@@ -229,7 +255,7 @@ Fox: A marriage proposal? Might be too soon darling~
 - -> HUB
 
 = LURE
-Player: Want to join to my room?
+Player: Did you happen to see any "Carmen" here?
     ~ fadeOut(0.5)
     Player: bite bite bite bite
     Fox: nooooooooooooo
