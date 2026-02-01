@@ -12,10 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMoving;
     
-    [Header("References")] //#####################################################################################################
-    public Transform playerSprite;
-    public Transform spritePivot;
-    public Animator animator;
+    // [Header("References")] //#####################################################################################################
+    // public Animator animator;
     
     private Transform _trans;
     private UnityEngine.AI.NavMeshAgent _navMeshAgent;
@@ -59,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
 
         _isMoving = _navMeshAgent.velocity.magnitude > 0.1f;
-        animator.SetBool("isMoving", _isMoving);
+        // animator.SetBool("isMoving", _isMoving);
 
         if (_isMoving) UpdateMoveRotation();
     }
@@ -70,10 +68,12 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = (steeringTarget - (Vector2)_trans.position).normalized;
         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _trans.rotation = Quaternion.Euler(0, 0, angle);
+        // _trans.rotation = Quaternion.Euler(0, 0, angle);
 
-        animator.SetFloat("lookH", direction.x);
-        animator.SetFloat("lookV", direction.y);
+        _trans.localScale = new Vector3(direction.x >= 0 ? 2 : -2, 2, 1);
+
+        // animator.SetFloat("lookH", direction.x);
+        // animator.SetFloat("lookV", direction.y);
     }
 
 
