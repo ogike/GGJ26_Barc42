@@ -8,6 +8,7 @@ EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 
 EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
+EXTERNAL changeMask(maskName)
 
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
@@ -20,8 +21,44 @@ VAR fox_interest_bear = 4
 VAR fox_interest_alien = -1
 
 VAR current_mask = "alien"
+VAR lion_mask_obtained = false
+VAR bear_mask_obtained = false
+VAR fox_mask_obtained = false
 
-//-> GOSSIPNPC1
+
+=== MIRROR
+
+{
+    - lion_mask_obtained or bear_mask_obtained or fox_mask_obtained: -> CHOOSE_MASK
+    - else: -> NO_MASKS
+}
+
+= NO_MASKS
+Player: I'm getting bored of wearing this mask....<br>What if I could get a different one?
+-> DONE
+
+= CHOOSE_MASK
+Player: What a lovely selection of masks!<br>Which one should I wear?
++ {lion_mask_obtained} [Lion Mask]
+    ~ current_mask = "lion"
+    ~ changeMask(current_mask)
+    Player: A bold presence is what I need tonight.
+    -> DONE
++ {bear_mask_obtained} [Bear Mask]
+    ~ current_mask = "bear"
+    ~ changeMask(current_mask)
+    Player: A strong presence is what I need tonight.
+    -> DONE
++ {fox_mask_obtained} [Fox Mask]
+    ~ current_mask = "fox"
+    ~ changeMask(current_mask)
+    Player: A cunning presence is what I need tonight.
+    -> DONE
++ [Regular Mask]
+    ~ current_mask = "alien"
+    ~ changeMask(current_mask)
+    Player: Looking like an average guest is what I need tonight.
+    -> DONE
 
 === LION
 
@@ -74,9 +111,13 @@ Lion: Thank you!
 Player: Why don't we continue this at your room?
 Lion: Of course! I trust you so much now!
 ~ fadeOut(0.5)
-Player: Imagine animations here.
+Player: Sorry. I will need your mask.
 ~ killNpc("Lion")
+~ lion_mask_obtained = true
+~ current_mask = "lion"
+~ changeMask(current_mask)
 ~ teleportPlayer("PostKillPosition")
+Player: Much better.
 ~ fadeIn(0.5)
 -> DONE
 //TODO: fade out
@@ -109,9 +150,9 @@ Fox: What do you want from me?
     -> CHIT_CHAT_DRUGS
 * {getCurrentInterestFox() > 6} [Lure them]
     -> LURE
-* {getCurrentInterestFox > 3} The perfume you are wearing is exquisite.
+* {getCurrentInterestFox() > 3} The perfume you are wearing is exquisite.
     -> CHIT_CHAT_PERFUME
-* {getCurrentInterestFox > 4} Would you be interested in a proposal?
+* {getCurrentInterestFox() > 4} Would you be interested in a proposal?
     -> CHIT_CHAT_PROPOSE
 * Sorry. I have to go.
     -> DONE
@@ -178,7 +219,11 @@ Player: Want to join to my room?
     Player: bite bite bite bite
     Fox: nooooooooooooo
     ~ killNpc("Fox")
+    ~ fox_mask_obtained = true
+    ~ current_mask = "fox"
+    ~ changeMask(current_mask)
     ~ teleportPlayer("PostKillPosition")
+    Player: What a lovely new mask to wear.
     ~ fadeIn(0.5)
 - -> DONE
 
@@ -238,10 +283,13 @@ Bear: I agree that we continue this without the crowd watching.
 ~ fadeOut(0.5)
 Player: Imagine animations here.
 ~ killNpc("Bear")
+~ bear_mask_obtained = true
+~ current_mask = "bear"
+~ changeMask(current_mask)
 ~ teleportPlayer("PostKillPosition")
+Player: Ahhh, I feel so much more powerful in tihs mask.
 ~ fadeIn(0.5)
 -> DONE
-//TODO: fade out
 //TODO: animation
 
 = fallback
@@ -457,4 +505,5 @@ VAR goss = -> GOSSIP1
 ~ return 0
 === function teleportPlayer(placeName) ===
 ~ return 0
-
+=== function changeMask(maskName) ===
+~ return 0

@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
 
     public Sprite defaultPlayerMaskSprite;
+    public Sprite lionMaskSprite;
+    public Sprite foxMaskSprite;
+    public Sprite bearMaskSprite;
+    public Sprite deathSprite;
 
     private List<GameObject> _npcs;
 
@@ -39,6 +43,27 @@ public class GameManager : MonoBehaviour
         DialogueUI.Instance.SetPlayerPortrait(defaultPlayerMaskSprite);
     }
 
+    public void ChangeMask(string maskName)
+    {
+        Sprite newMaskSprite = defaultPlayerMaskSprite;
+        switch (maskName)
+        {
+            case "fox":
+                newMaskSprite = foxMaskSprite;
+                break;
+            case "lion":
+                newMaskSprite = lionMaskSprite;
+                break;
+            case "bear":
+                newMaskSprite = bearMaskSprite;
+                break;
+            default:
+                newMaskSprite = defaultPlayerMaskSprite;
+                break;
+        }
+        DialogueUI.Instance.SetPlayerPortrait(newMaskSprite);
+    }
+
     public void KillNpc(string npcName)
     {
         GameObject npc = _npcs.Find(elem => elem.transform.name == npcName);
@@ -49,6 +74,7 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log($"Killed: {npcName}");
+        DialogueUI.Instance.SetNpcPortrait(deathSprite);
         npc.SetActive(false);
     }
 

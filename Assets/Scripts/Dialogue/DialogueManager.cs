@@ -174,6 +174,11 @@ namespace Dialogue
                 if(debugMode) Debug.Log($"InkDebug: Teleporting player to {placeName}...");
                 GameManager.Instance.TeleportPlayer(placeName);
             });
+            
+            currentStory.BindExternalFunction ("changeMask", (string maskName) => {
+                if(debugMode) Debug.Log($"InkDebug: Changing mask to {maskName}...");
+                GameManager.Instance.ChangeMask(maskName);
+            });
         }
         
         public void EnterDialogueMode(DialogueClass triggerer) 
