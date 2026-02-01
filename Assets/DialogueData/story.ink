@@ -157,6 +157,9 @@ Player: Sorry. I will need your mask.
 ~ lion_mask_obtained = true
 ~ current_mask = "lion"
 ~ changeMask(current_mask)
+
+{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained -> ENDING}
+
 ~ teleportPlayer("PostKillPosition")
 Player: Much better.
 ~ fadeIn(0.5)
@@ -264,6 +267,9 @@ Player: Did you happen to see any "Carmen" here?
     ~ current_mask = "fox"
     ~ changeMask(current_mask)
     ~ teleportPlayer("PostKillPosition")
+
+{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained -> ENDING}
+
     Player: What a lovely new mask to wear.
     ~ fadeIn(0.5)
 - -> DONE
@@ -328,6 +334,9 @@ Player: Imagine animations here.
 ~ current_mask = "bear"
 ~ changeMask(current_mask)
 ~ teleportPlayer("PostKillPosition")
+
+{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained -> ENDING}
+
 Player: Ahhh, I feel so much more powerful in tihs mask.
 ~ fadeIn(0.5)
 -> DONE
@@ -339,6 +348,11 @@ Meow.
 -> DONE
 //##################################################################################
 
+=== ENDING
+Thought: With the lion, the fox, and the bear mask, you have everything to stop secret meeting.
+The fundraiser party was for a war that won't happen. Thanks to you.
+We hope you enjoyed our game!
+//TODO: throw to main menu
 
 VAR goss = -> GOSSIP1
 === GOSSIPNPC1
