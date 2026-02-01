@@ -11,12 +11,8 @@ namespace UI
         public PanelUI mainPanel;
         
         public bool InSubMenu { get; private set; }
-        
-        public SettingsMenu settingsMenu;
-        public PanelUI controlsMenu;
-        public PanelUI creditsMenu;
-        
-        
+
+
         private void Start()
         {
             Time.timeScale = 1;
@@ -26,58 +22,11 @@ namespace UI
             ShowMainPanel();
             FadeToBlack.Instance.FadeIn(FadeToBlack.Instance.defaultFadeInTime);
         }
-        
-        void Update()
-        {
-            if (UserInput.Instance.PauseMenuPressedThisFrame)
-            {
-   
-                if (InSubMenu)
-                {
-                    ShowMainPanel();
-                }
-            }
-        }
-
-        public void ShowSettings()
-        {
-            InSubMenu = true;
-            settingsMenu.ShowSettingsPanel();
-            
-            mainPanel.Hide();
-            creditsMenu.Hide();
-            controlsMenu.Hide();
-        }
-
-        public void ShowControls()
-        {
-            InSubMenu = true;
-            
-            settingsMenu.HideSettingsPanel();
-            mainPanel.Hide();
-            creditsMenu.Hide();
-            
-            controlsMenu.Show();
-        }
-        
-        public void ShowCredits()
-        {
-            InSubMenu = true;
-            
-            settingsMenu.HideSettingsPanel();
-            mainPanel.Hide();
-            controlsMenu.Hide();
-            
-            creditsMenu.Show();
-        }
 
         public void ShowMainPanel()
         {
             InSubMenu = false;
-            settingsMenu.HideSettingsPanel();
-            controlsMenu.Hide();
-            creditsMenu.Hide();
-            
+
             mainPanel.Show();
         }
 

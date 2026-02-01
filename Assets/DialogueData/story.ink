@@ -11,6 +11,7 @@ EXTERNAL teleportPlayer(placeName)
 EXTERNAL changeMask(maskName)
 
 EXTERNAL openDoor()
+EXTERNAL goToMainMenu()
 
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
@@ -158,7 +159,7 @@ Player: Sorry. I will need your mask.
 ~ current_mask = "lion"
 ~ changeMask(current_mask)
 
-{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained -> ENDING}
+{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained: -> ENDING}
 
 ~ teleportPlayer("PostKillPosition")
 Player: Much better.
@@ -268,7 +269,7 @@ Player: Did you happen to see any "Carmen" here?
     ~ changeMask(current_mask)
     ~ teleportPlayer("PostKillPosition")
 
-{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained -> ENDING}
+{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained: -> ENDING}
 
     Player: What a lovely new mask to wear.
     ~ fadeIn(0.5)
@@ -335,7 +336,7 @@ Player: Imagine animations here.
 ~ changeMask(current_mask)
 ~ teleportPlayer("PostKillPosition")
 
-{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained -> ENDING}
+{lion_mask_obtained and bear_mask_obtained and fox_mask_obtained: -> ENDING}
 
 Player: Ahhh, I feel so much more powerful in tihs mask.
 ~ fadeIn(0.5)
@@ -352,7 +353,8 @@ Meow.
 Thought: With the lion, the fox, and the bear mask, you have everything to stop secret meeting.
 The fundraiser party was for a war that won't happen. Thanks to you.
 We hope you enjoyed our game!
-//TODO: throw to main menu
+~ goToMainMenu()
+-> DONE
 
 VAR goss = -> GOSSIP1
 === GOSSIPNPC1
@@ -561,4 +563,6 @@ VAR goss = -> GOSSIP1
 === function teleportPlayer(placeName) ===
 ~ return 0
 === function changeMask(maskName) ===
+~ return 0
+=== function goToMainMenu() ===
 ~ return 0

@@ -184,6 +184,10 @@ namespace Dialogue
                 if(debugMode) Debug.Log($"InkDebug: Changing mask to {maskName}...");
                 GameManager.Instance.ChangeMask(maskName);
             });
+            
+            currentStory.BindExternalFunction ("goToMainMenu", () => {
+                GameManager.Instance.GoToMainMenu();
+            });
         }
         
         public void EnterDialogueMode(DialogueClass triggerer) 
