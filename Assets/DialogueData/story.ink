@@ -10,8 +10,6 @@ EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 EXTERNAL changeMask(maskName)
 
-EXTERNAL openDoor()
-
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
 VAR lion_interest_alien = -1
@@ -27,30 +25,6 @@ VAR lion_mask_obtained = false
 VAR bear_mask_obtained = false
 VAR fox_mask_obtained = false
 
-VAR knows_door_code = false
-
-=== CODE_GIVER
-Code giver: Why hello there! Just shout "potato" at the door and they'll let you in.
-~ knows_door_code = true
--> DONE
-
-=== DOOR
-???: Halt! What's the password?
-{
-    - knows_door_code: 
-        Player: Potato.
-        ???: Ah, welcome in!
-        ~ openDoor()
-        -> DONE
-    - else: 
-        Player: Uh... password?
-        ???: ...
-        ???: Did you really think we'd choose such a dumb one?
-        ???: Go away!
-        -> DONE
-}
-
-//-> GOSSIPNPC1
 
 === MIRROR
 
@@ -113,16 +87,18 @@ Lion: Let's get to the point.<br>What do you want?
 
 = CHIT_CHAT_FUNDING
 Lion: Oh. You can leave a cheque at the receptionist.
-* That's too much work...
+* Maybe later, if you impress me.
     ~ changeCurrentInterestLion(-1)
-* Thank you! I will leave a gazillion dollars.
-    The children of the future war need it.
+    <i>I don't think they liked that</i>
+* Thank you! I will make a generous donation. The children of the future war deserve no less.
     ~ changeCurrentInterestLion(1)
+    <i>Lion seems pleased</i>
+* Good to know.
 - -> HUB
 
 = CHIT_CHAT_LIQUOR
-Lion: Only the best for my guests. I would suggest the rare Remus reserve bourbon, but feel free to pick your poison. 
-* That sounds good. I'll have it with two ice cubes, thanks.
+Lion: Only the best for my guests. {!I would suggest the rare Remus reserve bourbon, but feel free to pick your poison.}
+* {CHIT_CHAT_LIQUOR == 1} That sounds good. I'll have it with two ice cubes, thanks.
     ~ changeCurrentInterestLion(-1)
     Lion: ... That will be at the bar, dear. 
 * Thank you for the recommendation.
@@ -147,8 +123,8 @@ Lion: Only the best for my guests. I would suggest the rare Remus reserve bourbo
 - -> HUB
 
 = LURE
-Player: Why don't we continue this at your room?
-Lion: Of course! I trust you so much now!
+Player: One of my partners might be interested in your hotel. Why don't we find somewhere private to talk?
+Lion: Of course!
 ~ fadeOut(0.5)
 Player: Sorry. I will need your mask.
 ~ killNpc("Lion")
@@ -176,10 +152,10 @@ Meow.
 }
 
 = INTRODUCTION
-Player: What an alluring guest.<br>What's bringing you here tonight?
-Fox: Better question...
-Fox: What's bringing you here to me, pretty thing?
-Fox: What do you want from me?
+Player: What an alluring demeanor. What brings you here tonight?
+Fox: Oh, I would ask the same of you, you pretty thing.
+//Fox: What's bringing you here to me, pretty thing?
+//Fox: What do you want from me?
 -> HUB
 
 = HUB
@@ -544,9 +520,5 @@ VAR goss = -> GOSSIP1
 ~ return 0
 === function teleportPlayer(placeName) ===
 ~ return 0
-
-=== function openDoor() ===
-~ return 0
-
 === function changeMask(maskName) ===
 ~ return 0
