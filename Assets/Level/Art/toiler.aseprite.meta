@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9a02cac3644e4534f968ae67955d36e9
+guid: 66aaada5aeb088e4ea35635c4e99ea62
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: hotel_floor
+  - name: toiler
     originalName: 
-    pivot: {x: 0.5241719, y: -0.05797101}
+    pivot: {x: 0.4832402, y: -0.23701298}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 2234
-      height: 1173
-    spriteID: 2c668a27b9b8a99478246c6d567330b1
+      width: 537
+      height: 308
+    spriteID: e6187889e38a5bec9b859b781b23922d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2509566829
+      value0: 1475374113
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: hotel_floor
+    name: toiler
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: hotel_floor
+    - name: toiler
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 79
-        y: 68
-        width: 2234
-        height: 1173
-      spriteId: 2c668a27b9b8a99478246c6d567330b1
+        x: 18
+        y: 73
+        width: 537
+        height: 308
+      spriteId: e6187889e38a5bec9b859b781b23922d
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 2500, y: 1372}
-  previousTextureSize: {x: 4096, y: 2048}
+  canvasSize: {x: 555, y: 411}
+  previousTextureSize: {x: 1024, y: 512}
