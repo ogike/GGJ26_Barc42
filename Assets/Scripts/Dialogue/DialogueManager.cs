@@ -178,6 +178,10 @@ namespace Dialogue
             currentStory.BindExternalFunction ("openDoor", () => {
                 if(debugMode) Debug.Log($"InkDebug: Opening door...");
                 GameManager.Instance.OpenCodeDoor();
+            
+            currentStory.BindExternalFunction ("changeMask", (string maskName) => {
+                if(debugMode) Debug.Log($"InkDebug: Changing mask to {maskName}...");
+                GameManager.Instance.ChangeMask(maskName);
             });
         }
         

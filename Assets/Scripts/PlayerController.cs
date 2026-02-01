@@ -80,5 +80,6 @@ public class PlayerController : MonoBehaviour
     public void Teleport(Vector3 position)
     {
         _trans.position = position;
+        _navMeshAgent.SetDestination(position);
     }
 }
