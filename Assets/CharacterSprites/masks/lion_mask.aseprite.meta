@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 29b99b2e1f8bc6c4b9c39231dcdb63fb
+guid: 5d7f59cd1cf781093be43d3dc2809e5f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Orange_char
+  - name: lion_mask
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 35
-      height: 76
-    spriteID: 265f4628b36c7bc4ba8ae254e52412f6
+      width: 50
+      height: 50
+    spriteID: ace41a3ef60107d2fa2417d8efefceb0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 197544063
+      value0: 2715837119
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Orange_char
+    name: lion_mask
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Orange_char
+    - name: lion_mask
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 35
-        height: 76
-      spriteId: 265f4628b36c7bc4ba8ae254e52412f6
+        width: 50
+        height: 50
+      spriteId: ace41a3ef60107d2fa2417d8efefceb0
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 35, y: 76}
-  previousTextureSize: {x: 64, y: 128}
+  canvasSize: {x: 50, y: 50}
+  previousTextureSize: {x: 64, y: 64}
