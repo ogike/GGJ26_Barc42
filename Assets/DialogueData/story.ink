@@ -117,6 +117,7 @@ Player: Sorry. I will need your mask.
 ~ current_mask = "lion"
 ~ changeMask(current_mask)
 ~ teleportPlayer("PostKillPosition")
+Player: Much better.
 ~ fadeIn(0.5)
 -> DONE
 //TODO: fade out
@@ -222,6 +223,7 @@ Player: Want to join to my room?
     ~ current_mask = "fox"
     ~ changeMask(current_mask)
     ~ teleportPlayer("PostKillPosition")
+    Player: What a lovely new mask to wear.
     ~ fadeIn(0.5)
 - -> DONE
 
@@ -285,6 +287,7 @@ Player: Imagine animations here.
 ~ current_mask = "bear"
 ~ changeMask(current_mask)
 ~ teleportPlayer("PostKillPosition")
+Player: Ahhh, I feel so much more powerful in tihs mask.
 ~ fadeIn(0.5)
 -> DONE
 //TODO: animation

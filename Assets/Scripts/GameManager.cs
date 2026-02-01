@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Sprite lionMaskSprite;
     public Sprite foxMaskSprite;
     public Sprite bearMaskSprite;
+    public Sprite deathSprite;
 
     private List<GameObject> _npcs;
 
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
         }
         
         Debug.Log($"Killed: {npcName}");
+        DialogueUI.Instance.SetNpcPortrait(deathSprite);
         npc.SetActive(false);
     }
 
