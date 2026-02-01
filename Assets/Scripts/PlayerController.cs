@@ -82,4 +82,9 @@ public class PlayerController : MonoBehaviour
         _trans.position = position;
         _navMeshAgent.SetDestination(position);
     }
+
+    public void StopMoving()
+    {
+        _navMeshAgent.SetDestination(_trans.position);
+    }
 }
