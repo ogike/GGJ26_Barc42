@@ -183,7 +183,7 @@ Meow.
 
 = INTRODUCTION
 Player: What an alluring demeanor. What brings you here tonight?
-Fox: Oh, I would ask the same of you, you pretty thing.
+Fox: Oh, I would ask the same, you pretty thing.
 //Fox: What's bringing you here to me, pretty thing?
 //Fox: What do you want from me?
 -> HUB
@@ -191,9 +191,7 @@ Fox: Oh, I would ask the same of you, you pretty thing.
 = HUB
 * That is a splendid dress, where did you get it?
     -> CHIT_CHAT_FLATTER
-* Did you by any chance see any "Carmen" here?
-    -> CHIT_CHAT_DRUGS
-* {getCurrentInterestFox() > 6} [Lure them]
+* {getCurrentInterestFox() > 6} [Lure her]
     -> LURE
 * {getCurrentInterestFox() > 3} The perfume you are wearing is exquisite.
     -> CHIT_CHAT_PERFUME
@@ -241,25 +239,28 @@ Fox: Of course, what vision are you going for?
 
 = CHIT_CHAT_PROPOSE
 Fox: A marriage proposal? Might be too soon darling~
-* For that I'd choose a better place and time, don't worry. It's about a business.
+* For that I'd choose a better place and time, don't worry. It's about business.
     Fox: Oh, do tell.
     Player: I'd like to know more about some of your sources.
     Player: If you know what I mean.
-    Fox: I understand you perfectly and clear.<br>Lend me some of your time then, if you don't mind.
+    Fox: I know exactly what you mean. Lend me some of your time then, if you don't mind.
     ~ changeCurrentInterestFox(1)
-    Player: [I see her relax and ease into talking about all the alinments she can get<br>at the snap of her finger.]
-* That's not my style, I'd like to stay in my line. It's about a business.  
+    Player: [I see her relax and ease into talking about all the alignments she can get at the snap of her finger.]
+* That's not my style, I'd like to stay in my lane. It's about a business.  
     Fox: You are the uptight kind...
     Fox: What is it?
     Player: I'd like to know more about some of your sources.
     Player: If you know what I mean.
     Fox: I don't have much time, so I'll be brief.
-    Player: [She speedruns through her contacts, looking right through me.<br>I can't comprehend any of it, it's that fast]
+    Player: [She speedruns through her contacts, looking right through me. I can't comprehend any of it, it's too fast]
     ~ changeCurrentInterestFox(-1)
 - -> HUB
 
 = LURE
 Player: Did you happen to see any "Carmen" here?
+Fox: Not yet, should we go look for her together? 
+Player: Of course, with your beautiful face I'm certain we will find her quickly.
+Fox: I will lead the way, then.
     ~ fadeOut(0.5)
     Player: bite bite bite bite
     Fox: nooooooooooooo
@@ -291,43 +292,45 @@ Meow.
 }
 
 = INTRODUCTION
-Player: You strike an imposing figure, Mr Bear.<br>What brings you here tonight?
-Bear: Flattery won't get you anywhere.<br>What is it that you want?
+Player: You strike an imposing figure, Mr Bear. What brings you here tonight?
+Bear: Flattery won't get you anywhere. What is it that you want?
 -> HUB
 
 = HUB
-* Are you the bodyguard here?
+* Are you someone's bodyguard?
     -> CHIT_CHAT_GUARD
 * What is your goal here at the fundraiser?
     -> CHIT_CHAT_FUNDRAISE
-* {getCurrentInterestBear() > 0} [Lure them]
+* {getCurrentInterestBear() > 4} [Lure him]
     -> LURE
 + Sorry. I have to go.
     -> DONE
 + -> fallback
 
 = CHIT_CHAT_GUARD
-Bear: I can't talk about my work, it is off limits.
+Bear: I won't talk about work here, it is often classified.
 Bear: Why do you ask?
 * Was hoping to get a bodyguard myself, but then this is not the right place for it.
-    Bear: Yes, that is not a topic you should bring up out of the blue here.
+    Bear: If you know it is not the right place, why are you asking?
     ~ changeCurrentInterestBear(-1)
-* I was thinking of networking around security companies.
-    Player: My next big investment will be in a bar chain across the city.<br>Hoped you could recommend me some services?
+* I was hoping to meet people involved in the security industry.
+    Player: My next big investment will be in a bar chain across the city. I was hoping you could recommend some services to me.
     Bear: I have a few people I could ask.
     Player: That would be great, thank you.
     ~ changeCurrentInterestBear(1)
 - -> HUB
 
 = CHIT_CHAT_FUNDRAISE
-Bear: I care about the country's children.<br>You?
-* I would like to help them too. I have big hopes in my next investment,<br>hope the masses see the potential as well.
+Bear: I care about the country's children. You?
+* I would like to help them too. I have big hopes in my next investment, hope the masses see the potential as well.
     ~ changeCurrentInterestBear(1)
--> HUB
+* I was hoping to make some new contacts.
+    Bear: Hmm.
+- -> HUB
 
 = LURE
-Player: Why don't we continue this at your room?
-Bear: I agree that we continue this without the crowd watching.
+Player: Why don't we take this to your room?
+Bear: Oh, yes, I'd prefer a more intimate setting. Too many eyes in this crowd.
 ~ fadeOut(0.5)
 Player: Imagine animations here.
 ~ killNpc("Bear")
@@ -344,7 +347,7 @@ Player: Ahhh, I feel so much more powerful in tihs mask.
 //TODO: animation
 
 = fallback
-Bear: you ran out of choces.
+Bear: you ran out of choices.
 Meow.
 -> DONE
 //##################################################################################
