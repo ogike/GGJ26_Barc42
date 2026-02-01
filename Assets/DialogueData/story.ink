@@ -10,8 +10,6 @@ EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 EXTERNAL changeMask(maskName)
 
-EXTERNAL openDoor()
-
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
 VAR lion_interest_alien = -1
@@ -27,30 +25,6 @@ VAR lion_mask_obtained = false
 VAR bear_mask_obtained = false
 VAR fox_mask_obtained = false
 
-VAR knows_door_code = false
-
-=== CODE_GIVER
-Code giver: Why hello there! Just shout "potato" at the door and they'll let you in.
-~ knows_door_code = true
--> DONE
-
-=== DOOR
-???: Halt! What's the password?
-{
-    - knows_door_code: 
-        Player: Potato.
-        ???: Ah, welcome in!
-        ~ openDoor()
-        -> DONE
-    - else: 
-        Player: Uh... password?
-        ???: ...
-        ???: Did you really think we'd choose such a dumb one?
-        ???: Go away!
-        -> DONE
-}
-
-//-> GOSSIPNPC1
 
 === MIRROR
 
@@ -101,16 +75,9 @@ Lion: Let's get to the point.<br>What do you want?
 -> HUB
 
 = HUB
-* How can I join the funding?
+* How can I participate in the fundraiser?
     -> CHIT_CHAT_FUNDING
-* [*stares*]
-    Lion: *leaves*.
-    ~ changeCurrentInterestLion(-1)
-    -> HUB
-* [Nothing.]
-    Lion: Uh.... sure.
-    -> HUB
-* What is your finest liquor?
+* Word is your establishment has many delectable spirits.
     -> CHIT_CHAT_LIQUOR
 * {getCurrentInterestLion() > 0} [Lure them]
     -> LURE
@@ -119,23 +86,45 @@ Lion: Let's get to the point.<br>What do you want?
 + -> fallback
 
 = CHIT_CHAT_FUNDING
-Lion: Oh! You can leave a cheque at the receptionist!
-* That's too much work...
+Lion: Oh. You can leave a cheque at the receptionist.
+* Maybe later, if you impress me.
     ~ changeCurrentInterestLion(-1)
-* Thank you! I will leave a gazillion dollars.
-    The children of the future war need it.
+    <i>I don't think they liked that</i>
+* Thank you! I will make a generous donation. The children of the future war deserve no less.
     ~ changeCurrentInterestLion(1)
+    <i>Lion seems pleased</i>
+* Good to know.
 - -> HUB
 
 = CHIT_CHAT_LIQUOR
-I bet your establishment has some good wine.
-Lion: Thank you! 
-~ changeCurrentInterestLion(1)
--> HUB
+Lion: Only the best for my guests. {!I would suggest the rare Remus reserve bourbon, but feel free to pick your poison.}
+* {CHIT_CHAT_LIQUOR == 1} That sounds good. I'll have it with two ice cubes, thanks.
+    ~ changeCurrentInterestLion(-1)
+    Lion: ... That will be at the bar, dear. 
+* Thank you for the recommendation.
+* Do you have single malt scotch?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have any garnacha reds?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have any Lagavulin reserves?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Oh, we have just the thing for you.
+* Do you have korean soju?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have catalan cava?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have greek mastiha?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Ah, I believe we do.
+- -> HUB
 
 = LURE
-Player: Why don't we continue this at your room?
-Lion: Of course! I trust you so much now!
+Player: One of my partners might be interested in your hotel. Why don't we find somewhere private to talk?
+Lion: Of course!
 ~ fadeOut(0.5)
 Player: Sorry. I will need your mask.
 ~ killNpc("Lion")
@@ -163,10 +152,10 @@ Meow.
 }
 
 = INTRODUCTION
-Player: What an alluring guest.<br>What's bringing you here tonight?
-Fox: Better question...
-Fox: What's bringing you here to me, pretty thing?
-Fox: What do you want from me?
+Player: What an alluring demeanor. What brings you here tonight?
+Fox: Oh, I would ask the same of you, you pretty thing.
+//Fox: What's bringing you here to me, pretty thing?
+//Fox: What do you want from me?
 -> HUB
 
 = HUB
@@ -366,7 +355,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: I should maybe stop gossiping.
+        Gossiper: Maybe I should stop gossiping.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -402,7 +391,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: Ah... I wish my mask was prettier.
+        Gossiper: Oh... How I wish my mask was prettier.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -429,16 +418,16 @@ VAR goss = -> GOSSIP1
     Gossiper: {~I can't believe the CEO of RealESpace is wearing a genuine Camille Lecourt design. She slayin', too.|Have you seen the one with the fox mask? She must be loaded, to be wearing a Camille Lecourt dress.}
 -> DONE
 === GOSSIP3
-    Gossiper: {~The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.|The Lion has been running up and down until now. Must be hard to run a hotel}
+    Gossiper: {~The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.|The Lion has been running up and down until now. Must be hard to run a hotel.}
 -> DONE
 === GOSSIP4
-    Gossiper: {~I haven't seen Sandra tonight. But it's no wonder the owner of the Royal Cat Hotel would not<br>want her or their kids in the fish tank when the sharks are swimming.|I do hope Sandra is feeling better, but I don't quite buy the hotel owner's story. They were surely trying to keep her away from the bear.}
+    Gossiper: {~I haven't seen Sandra tonight. But it's no wonder the owner of the Royal Cat Hotel would not want her or their kids in the fish tank when the sharks are swimming.|I do hope Sandra is feeling better, but I don't quite buy the hotel owner's story. They were surely trying to keep her away from the bear.}
 -> DONE
 === GOSSIP5
     Gossiper: {~The minister might think he can garner enough support if he secures donations, but I can tell his ship is sinking.|Who has the gall to attend a fundraiser and ask for money? The bear's re-election might be teetering on the edge.}
 -> DONE
 === GOSSIP6
-    Gossiper: {~Have you seen Carmen? She promised me a hit.|I really need to ask the Fox lady where she got her stuff.}
+    Gossiper: {~It's a shame the Lion is sober now, their benders with the Fox were legendary.|I'm glad the Fox and the Lion stopped drinking together, it was not doing anyone any good.|It's good to know the Lion and the Fox are still friends after what happened.}
 -> DONE
     
 
@@ -531,9 +520,5 @@ VAR goss = -> GOSSIP1
 ~ return 0
 === function teleportPlayer(placeName) ===
 ~ return 0
-
-=== function openDoor() ===
-~ return 0
-
 === function changeMask(maskName) ===
 ~ return 0
