@@ -63,4 +63,17 @@ public class GameManager : MonoBehaviour
         
         PlayerController.Instance.Teleport(place.transform.position);
     }
+
+    public void OpenCodeDoor()
+    {
+        CodeDoor codeDoor = FindObjectOfType<CodeDoor>();
+        if (!codeDoor)
+        {
+            Debug.LogWarning("No CodeDoor found in scene!");
+            return;
+        }
+
+        Debug.Log("Opening Code Door via GameManager");
+        codeDoor.Open();
+    }
 }

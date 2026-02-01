@@ -9,6 +9,8 @@ EXTERNAL wait(waitTime) // Pause ink, hide dialogue boxed, then return
 EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 
+EXTERNAL openDoor()
+
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
 VAR lion_interest_alien = -1
@@ -20,6 +22,29 @@ VAR fox_interest_bear = 4
 VAR fox_interest_alien = -1
 
 VAR current_mask = "alien"
+
+VAR knows_door_code = false
+
+=== CODE_GIVER
+Code giver: Why hello there! Just shout "potato" at the door and they'll let you in.
+~ knows_door_code = true
+-> DONE
+
+=== DOOR
+???: Halt! What's the password?
+{
+    - knows_door_code: 
+        Player: Potato.
+        ???: Ah, welcome in!
+        ~ openDoor()
+        -> DONE
+    - else: 
+        Player: Uh... password?
+        ???: ...
+        ???: Did you really think we'd choose such a dumb one?
+        ???: Go away!
+        -> DONE
+}
 
 //-> GOSSIPNPC1
 
@@ -423,3 +448,5 @@ VAR goss = -> GOSSIP1
 === function teleportPlayer(placeName) ===
 ~ return 0
 
+=== function openDoor() ===
+~ return 0
