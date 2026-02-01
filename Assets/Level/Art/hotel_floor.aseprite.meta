@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: hotel_floor
     originalName: 
-    pivot: {x: 0.5241719, y: -0.05797101}
+    pivot: {x: 0.4948154, y: -0.008123477}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,8 +137,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 2234
-      height: 1173
+      width: 2411
+      height: 1231
     spriteID: 2c668a27b9b8a99478246c6d567330b1
     spriteBone: []
     spriteOutline: []
@@ -167,10 +167,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 79
-        y: 68
-        width: 2234
-        height: 1173
+        x: 57
+        y: 10
+        width: 2411
+        height: 1231
       spriteId: 2c668a27b9b8a99478246c6d567330b1
     linkedCells: []
     tileCells: []
