@@ -244,6 +244,143 @@ Meow.
 -> DONE
 //##################################################################################
 
+
+VAR goss = -> GOSSIP1
+=== GOSSIPNPC1
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC2
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC3
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC4
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC5
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC6
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC7
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIPNPC8
+{
+    - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
+    - else: 
+        Gossiper: We should not draw more attention.
+        -> DONE
+}
+= CHOOSEGOSSIP
+    ~ goss = RandomGossip(RANDOM(0,5))
+    -> goss
+-> DONE
+
+=== GOSSIP1
+    Gossiper: Hahaha1
+-> DONE
+=== GOSSIP2
+    Gossiper: Hahaha2
+-> DONE
+=== GOSSIP3
+    Gossiper: Hahaha3
+-> DONE
+=== GOSSIP4
+    Gossiper: Hahaha4
+-> DONE
+=== GOSSIP5
+    Gossiper: Hahaha5
+-> DONE
+=== GOSSIP6
+    Gossiper: Hahaha6
+-> DONE
+    
+
+
+=== function RandomGossip(num) ===
+    { num:
+        - 0: 
+            ~ return -> GOSSIP1
+        - 1: 
+            ~ return -> GOSSIP2
+        - 2:
+            ~ return -> GOSSIP3
+        - 3:
+            ~ return -> GOSSIP4
+        - 4:
+            ~ return -> GOSSIP5
+        - 5:
+            ~ return -> GOSSIP6
+        - else:
+            ~ return -> GOSSIP1
+    }
+
 === function getCurrentInterestLion() ===
 { current_mask:
     - "bear": 
