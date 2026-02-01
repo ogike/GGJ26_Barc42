@@ -48,8 +48,11 @@ namespace Dialogue
         private Coroutine displayLineCoroutine;
 
         private const string PLAYER_STRING_TAG = "Player";
-        private const string PLAYER_STRING_TAG_2 = "Anna";
         private const string THOUGHT_STRING_TAG = "Thought";
+
+        private const string PLAYER_TITLE = "You";
+        private const string THOUGHT_TITLE = "Thought";
+
         private string _npcTalkingTag;
 
         private DialogueVariables dialogueVariables;
@@ -384,15 +387,18 @@ namespace Dialogue
             else if (parts.Length >= 2)
             {
                 string characterName = parts[0].Trim();
-                if (characterName is PLAYER_STRING_TAG or PLAYER_STRING_TAG_2)
+                string character_title = characterName;
+                if (characterName is PLAYER_STRING_TAG)
                 {
                     _npcTalking = false;
                     _isThought = false;
+                    character_title = PLAYER_TITLE;
                 }
                 else if (characterName is THOUGHT_STRING_TAG)
                 {
                     _npcTalking = false;
                     _isThought = true;
+                    character_title = THOUGHT_TITLE;
                 }
                 else if (_npcDialogueActive && characterName == _npcTalkingTag)
                 {
@@ -403,6 +409,7 @@ namespace Dialogue
                     Debug.Log($"Unable to handle character name: {characterName}");
                     _npcTalking = true; // default to NPC, probably speakingTag is not updated with a new NPC name
                 }
+                _ui.SetTalkingTitle(character_title);
 
                 return parts[1].Trim();
             }
@@ -443,11 +450,13 @@ namespace Dialogue
         {
             _hasShownChoice = true;
             _canContinueToNextLine = true;
+            _npcTalking = false;
             
             _currentChoiceIndex = 0;
             List<string> choiceTexts = new List<string>();
             currentStory.currentChoices.ForEach(choice => choiceTexts.Add(choice.text));
             _ui.ShowChoicesPanel(choiceTexts, _currentChoiceIndex);
+            _ui.SetTalkingTitle(PLAYER_TITLE);
         }
 
         public void NextChoice()
