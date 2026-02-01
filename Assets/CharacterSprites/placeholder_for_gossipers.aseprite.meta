@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 29b99b2e1f8bc6c4b9c39231dcdb63fb
+guid: b2332e34e5f6956588385d48ba7d7564
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Orange_char
+  - name: placeholder_for_gossipers
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.42499998, y: -0.18965517}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 35
-      height: 76
-    spriteID: 265f4628b36c7bc4ba8ae254e52412f6
+      width: 20
+      height: 58
+    spriteID: 6af0a473c8b863772a48ed7220cdd0fb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 197544063
+      value0: 3783406201
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Orange_char
+    name: placeholder_for_gossipers
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Orange_char
+    - name: placeholder_for_gossipers
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 35
-        height: 76
-      spriteId: 265f4628b36c7bc4ba8ae254e52412f6
+        x: 9
+        y: 11
+        width: 20
+        height: 58
+      spriteId: 6af0a473c8b863772a48ed7220cdd0fb
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

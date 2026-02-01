@@ -10,6 +10,8 @@ EXTERNAL killNpc(npcName)
 EXTERNAL teleportPlayer(placeName)
 EXTERNAL changeMask(maskName)
 
+EXTERNAL openDoor()
+
 VAR lion_interest_bear = -1
 VAR lion_interest_fox = 4
 VAR lion_interest_alien = -1
@@ -25,6 +27,30 @@ VAR lion_mask_obtained = false
 VAR bear_mask_obtained = false
 VAR fox_mask_obtained = false
 
+VAR knows_door_code = false
+
+=== CODE_GIVER
+Code giver: Why hello there! Just shout "potato" at the door and they'll let you in.
+~ knows_door_code = true
+-> DONE
+
+=== DOOR
+???: Halt! What's the password?
+{
+    - knows_door_code: 
+        Player: Potato.
+        ???: Ah, welcome in!
+        ~ openDoor()
+        -> DONE
+    - else: 
+        Player: Uh... password?
+        ???: ...
+        ???: Did you really think we'd choose such a dumb one?
+        ???: Go away!
+        -> DONE
+}
+
+//-> GOSSIPNPC1
 
 === MIRROR
 
@@ -518,5 +544,9 @@ VAR goss = -> GOSSIP1
 ~ return 0
 === function teleportPlayer(placeName) ===
 ~ return 0
+
+=== function openDoor() ===
+~ return 0
+
 === function changeMask(maskName) ===
 ~ return 0
