@@ -101,16 +101,9 @@ Lion: Let's get to the point.<br>What do you want?
 -> HUB
 
 = HUB
-* How can I join the funding?
+* How can I participate in the fundraiser?
     -> CHIT_CHAT_FUNDING
-* [*stares*]
-    Lion: *leaves*.
-    ~ changeCurrentInterestLion(-1)
-    -> HUB
-* [Nothing.]
-    Lion: Uh.... sure.
-    -> HUB
-* What is your finest liquor?
+* Word is your establishment has many delectable spirits.
     -> CHIT_CHAT_LIQUOR
 * {getCurrentInterestLion() > 0} [Lure them]
     -> LURE
@@ -119,23 +112,45 @@ Lion: Let's get to the point.<br>What do you want?
 + -> fallback
 
 = CHIT_CHAT_FUNDING
-Lion: Oh! You can leave a cheque at the receptionist!
-* That's too much work...
+Lion: Oh. You can leave a cheque at the receptionist.
+* Maybe later, if you impress me.
     ~ changeCurrentInterestLion(-1)
-* Thank you! I will leave a gazillion dollars.
-    The children of the future war need it.
+    <i>I don't think they liked that</i>
+* Thank you! I will make a generous donation. The children of the future war deserve no less.
     ~ changeCurrentInterestLion(1)
+    <i>Lion seems pleased</i>
+* Good to know.
 - -> HUB
 
 = CHIT_CHAT_LIQUOR
-I bet your establishment has some good wine.
-Lion: Thank you! 
-~ changeCurrentInterestLion(1)
--> HUB
+Lion: Only the best for my guests. {!I would suggest the rare Remus reserve bourbon, but feel free to pick your poison.}
+* {CHIT_CHAT_LIQUOR == 1} That sounds good. I'll have it with two ice cubes, thanks.
+    ~ changeCurrentInterestLion(-1)
+    Lion: ... That will be at the bar, dear. 
+* Thank you for the recommendation.
+* Do you have single malt scotch?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have any garnacha reds?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have any Lagavulin reserves?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Oh, we have just the thing for you.
+* Do you have korean soju?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have catalan cava?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Of course.
+* Do you have greek mastiha?.
+    ~ changeCurrentInterestLion(1)
+    Lion: Ah, I believe we do.
+- -> HUB
 
 = LURE
-Player: Why don't we continue this at your room?
-Lion: Of course! I trust you so much now!
+Player: One of my partners might be interested in your hotel. Why don't we find somewhere private to talk?
+Lion: Of course!
 ~ fadeOut(0.5)
 Player: Sorry. I will need your mask.
 ~ killNpc("Lion")
@@ -163,18 +178,16 @@ Meow.
 }
 
 = INTRODUCTION
-Player: What an alluring guest.<br>What's bringing you here tonight?
-Fox: Better question...
-Fox: What's bringing you here to me, pretty thing?
-Fox: What do you want from me?
+Player: What an alluring demeanor. What brings you here tonight?
+Fox: Oh, I would ask the same, you pretty thing.
+//Fox: What's bringing you here to me, pretty thing?
+//Fox: What do you want from me?
 -> HUB
 
 = HUB
-* You have a lovely dress, may I know what brand is it?
+* That is a splendid dress, where did you get it?
     -> CHIT_CHAT_FLATTER
-* Did you by any chance see any "Carmen" here?
-    -> CHIT_CHAT_DRUGS
-* {getCurrentInterestFox() > 6} [Lure them]
+* {getCurrentInterestFox() > 6} [Lure her]
     -> LURE
 * {getCurrentInterestFox() > 3} The perfume you are wearing is exquisite.
     -> CHIT_CHAT_PERFUME
@@ -185,13 +198,13 @@ Fox: What do you want from me?
 + -> fallback
 
 = CHIT_CHAT_FLATTER
-Fox: Hmmm, you have a good eye for these things, so I could share... 
+Fox: Ah, you have a good eye... 
 Fox: It is VRM, have you heard of it before?
 * Isn't that an Italian brand? I might have heard of it, not sure.
     ~ changeCurrentInterestFox(-1)
     Fox: Hmpf, maybe you are not worth my time after all. 
-* French, isn't it? Camille's spring collection is refined, however I prefer the winter one where your dress is from.
-    Fox: What a polished taste you have
+* French, isn't it? Camille's spring collection is refined, however I prefer her winter one. That is where your dress is from, if I am not mistaken.
+    Fox: My, what a polished taste you have.
     Fox: And the flattery is not lost on me darling~
     ~ changeCurrentInterestFox(1)
 - -> HUB
@@ -222,25 +235,28 @@ Fox: Of course, what vision are you going for?
 
 = CHIT_CHAT_PROPOSE
 Fox: A marriage proposal? Might be too soon darling~
-* For that I'd choose a better place and time, don't worry. It's about a business.
+* For that I'd choose a better place and time, don't worry. It's about business.
     Fox: Oh, do tell.
     Player: I'd like to know more about some of your sources.
     Player: If you know what I mean.
-    Fox: I understand you perfectly and clear.<br>Lend me some of your time then, if you don't mind.
+    Fox: I know exactly what you mean. Lend me some of your time then, if you don't mind.
     ~ changeCurrentInterestFox(1)
-    Player: [I see her relax and ease into talking about all the alinments she can get<br>at the snap of her finger.]
-* That's not my style, I'd like to stay in my line. It's about a business.  
+    Player: [I see her relax and ease into talking about all the alignments she can get at the snap of her finger.]
+* That's not my style, I'd like to stay in my lane. It's about a business.  
     Fox: You are the uptight kind...
     Fox: What is it?
     Player: I'd like to know more about some of your sources.
     Player: If you know what I mean.
     Fox: I don't have much time, so I'll be brief.
-    Player: [She speedruns through her contacts, looking right through me.<br>I can't comprehend any of it, it's that fast]
+    Player: [She speedruns through her contacts, looking right through me. I can't comprehend any of it, it's too fast]
     ~ changeCurrentInterestFox(-1)
 - -> HUB
 
 = LURE
-Player: Want to join to my room?
+Player: Did you happen to see any "Carmen" here?
+Fox: Not yet, should we go look for her together? 
+Player: Of course, with your beautiful face I'm certain we will find her quickly.
+Fox: I will lead the way, then.
     ~ fadeOut(0.5)
     Player: bite bite bite bite
     Fox: nooooooooooooo
@@ -269,43 +285,45 @@ Meow.
 }
 
 = INTRODUCTION
-Player: You strike an imposing figure, Mr Bear.<br>What brings you here tonight?
-Bear: Flattery won't get you anywhere.<br>What is it that you want?
+Player: You strike an imposing figure, Mr Bear. What brings you here tonight?
+Bear: Flattery won't get you anywhere. What is it that you want?
 -> HUB
 
 = HUB
-* Are you the bodyguard here?
+* Are you someone's bodyguard?
     -> CHIT_CHAT_GUARD
 * What is your goal here at the fundraiser?
     -> CHIT_CHAT_FUNDRAISE
-* {getCurrentInterestBear() > 0} [Lure them]
+* {getCurrentInterestBear() > 4} [Lure him]
     -> LURE
 + Sorry. I have to go.
     -> DONE
 + -> fallback
 
 = CHIT_CHAT_GUARD
-Bear: I can't talk about my work, it is off limits.
+Bear: I won't talk about work here, it is often classified.
 Bear: Why do you ask?
 * Was hoping to get a bodyguard myself, but then this is not the right place for it.
-    Bear: Yes, that is not a topic you should bring up out of the blue here.
+    Bear: If you know it is not the right place, why are you asking?
     ~ changeCurrentInterestBear(-1)
-* I was thinking of networking around security companies.
-    Player: My next big investment will be in a bar chain across the city.<br>Hoped you could recommend me some services?
+* I was hoping to meet people involved in the security industry.
+    Player: My next big investment will be in a bar chain across the city. I was hoping you could recommend some services to me.
     Bear: I have a few people I could ask.
     Player: That would be great, thank you.
     ~ changeCurrentInterestBear(1)
 - -> HUB
 
 = CHIT_CHAT_FUNDRAISE
-Bear: I care about the country's children.<br>You?
-* I would like to help them too. I have big hopes in my next investment,<br>hope the masses see the potential as well.
+Bear: I care about the country's children. You?
+* I would like to help them too. I have big hopes in my next investment, hope the masses see the potential as well.
     ~ changeCurrentInterestBear(1)
--> HUB
+* I was hoping to make some new contacts.
+    Bear: Hmm.
+- -> HUB
 
 = LURE
-Player: Why don't we continue this at your room?
-Bear: I agree that we continue this without the crowd watching.
+Player: Why don't we take this to your room?
+Bear: Oh, yes, I'd prefer a more intimate setting. Too many eyes in this crowd.
 ~ fadeOut(0.5)
 Player: Imagine animations here.
 ~ killNpc("Bear")
@@ -319,7 +337,7 @@ Player: Ahhh, I feel so much more powerful in tihs mask.
 //TODO: animation
 
 = fallback
-Bear: you ran out of choces.
+Bear: you ran out of choices.
 Meow.
 -> DONE
 //##################################################################################
@@ -366,7 +384,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: I should maybe stop gossiping.
+        Gossiper: Maybe I should stop gossiping.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -402,7 +420,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: Ah... I wish my mask was prettier.
+        Gossiper: Oh... How I wish my mask was prettier.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -429,16 +447,16 @@ VAR goss = -> GOSSIP1
     Gossiper: {~I can't believe the CEO of RealESpace is wearing a genuine Camille Lecourt design. She slayin', too.|Have you seen the one with the fox mask? She must be loaded, to be wearing a Camille Lecourt dress.}
 -> DONE
 === GOSSIP3
-    Gossiper: {~The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.|The Lion has been running up and down until now. Must be hard to run a hotel}
+    Gossiper: {~The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.|The Lion has been running up and down until now. Must be hard to run a hotel.}
 -> DONE
 === GOSSIP4
-    Gossiper: {~I haven't seen Sandra tonight. But it's no wonder the owner of the Royal Cat Hotel would not<br>want her or their kids in the fish tank when the sharks are swimming.|I do hope Sandra is feeling better, but I don't quite buy the hotel owner's story. They were surely trying to keep her away from the bear.}
+    Gossiper: {~I haven't seen Sandra tonight. But it's no wonder the owner of the Royal Cat Hotel would not want her or their kids in the fish tank when the sharks are swimming.|I do hope Sandra is feeling better, but I don't quite buy the hotel owner's story. They were surely trying to keep her away from the bear.}
 -> DONE
 === GOSSIP5
     Gossiper: {~The minister might think he can garner enough support if he secures donations, but I can tell his ship is sinking.|Who has the gall to attend a fundraiser and ask for money? The bear's re-election might be teetering on the edge.}
 -> DONE
 === GOSSIP6
-    Gossiper: {~Have you seen Carmen? She promised me a hit.|I really need to ask the Fox lady where she got her stuff.}
+    Gossiper: {~It's a shame the Lion is sober now, their benders with the Fox were legendary.|I'm glad the Fox and the Lion stopped drinking together, it was not doing anyone any good.|It's good to know the Lion and the Fox are still friends after what happened.}
 -> DONE
     
 
@@ -531,9 +549,5 @@ VAR goss = -> GOSSIP1
 ~ return 0
 === function teleportPlayer(placeName) ===
 ~ return 0
-
-=== function openDoor() ===
-~ return 0
-
 === function changeMask(maskName) ===
 ~ return 0

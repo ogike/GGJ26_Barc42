@@ -48,8 +48,8 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   defaultPlayerMaskSprite: {fileID: 21300000, guid: b7b8ab43f3a93704c8fc28667f395ceb, type: 3}
   lionMaskSprite: {fileID: 21300000, guid: 4b311da275b697746920569891edb58a, type: 3}
-  foxMaskSprite: {fileID: 21300000, guid: b7c043003c731cb47b2f4c30430695d7, type: 3}
-  bearMaskSprite: {fileID: 21300000, guid: f7ca8d6d22c51d34bbb012efb990a45f, type: 3}
+  foxMaskSprite: {fileID: 21300000, guid: 45fe1be84d2f753fa9b7050c5686f5dd, type: 3}
+  bearMaskSprite: {fileID: 21300000, guid: ef1a41e72febb164ba9d4402acc02d11, type: 3}
   deathSprite: {fileID: 21300000, guid: 044d3b52ab4356f4f94264d135aa27b9, type: 3}
 --- !u!114 &1169752884238763979
 MonoBehaviour:
