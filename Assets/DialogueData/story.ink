@@ -313,27 +313,22 @@ VAR goss = -> GOSSIP1
 -> DONE
 
 === GOSSIP1
-    Player: Mr Bear looks tense.
-    Gossiper: Oh my, that one with the bear mask is the minister. I heard him shouting to a valet after he offered to help him with his suitcase ohohoho.
+    Gossiper: {~That one with the bear mask is the minister. I heard him shouting to a valet after he offered to help him with his suitcase ohohoho.|I saw the minister is wearing a bear mask. They must have run out of insecure baboon masks.}
 -> DONE
 === GOSSIP2
-    Player: Quite the fashion side-show going on tonight.
-    Gossiper: Truly. I can't believe the CEO of RealESpace is wearing a genuine Camille Lecourt design. She slayin', too.
+    Gossiper: {~I can't believe the CEO of RealESpace is wearing a genuine Camille Lecourt design. She slayin', too.|Have you seen the one with the fox mask? She must be loaded, to be wearing a Camille Lecourt dress.}
 -> DONE
 === GOSSIP3
-    Player: You look worried
-    Gossiper: The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.
+    Gossiper: {~The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.|The Lion has been running up and down until now. Must be hard to run a hotel}
 -> DONE
 === GOSSIP4
-    Player: What an event. Like a who's who of movers and shakers.
-    Gossiper: I haven't seen Sandra though. But it's no wonder the owner of the Royal Cat Hotel would not<br>want her or their kids in the fish tank when the sharks are swimming.
+    Gossiper: {~I haven't seen Sandra tonight. But it's no wonder the owner of the Royal Cat Hotel would not<br>want her or their kids in the fish tank when the sharks are swimming.|I do hope Sandra is feeling better, but I don't quite buy the hotel owner's story. They were surely trying to keep her away from the bear.}
 -> DONE
 === GOSSIP5
-    Player: Imagine having the gall to attend a fundraiser to ask for money... 
-    Gossiper: I know right, the minister might think he can garner enough support if he secures donations, but I can tell his ship is sinking.  
+    Gossiper: {~The minister might think he can garner enough support if he secures donations, but I can tell his ship is sinking.|Who has the gall to attend a fundraiser and ask for money? The bear's re-election might be teetering on the edge.}
 -> DONE
 === GOSSIP6
-    Gossiper: Have you seen Carmen? She owes me a hit.
+    Gossiper: {~Have you seen Carmen? She promised me a hit.|I really need to ask the Fox lady where she got her stuff.}
 -> DONE
     
 
