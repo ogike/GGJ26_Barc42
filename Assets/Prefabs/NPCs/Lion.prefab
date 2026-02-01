@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 583909911411676096, guid: 1ba132d119d587c47a918b454618dbee, type: 3}
       propertyPath: dialogue.portrait
       value: 
-      objectReference: {fileID: 21300000, guid: 4b311da275b697746920569891edb58a, type: 3}
+      objectReference: {fileID: 21300000, guid: b1261b68b73e405debf8dec97ac58f12, type: 3}
     - target: {fileID: 583909911411676096, guid: 1ba132d119d587c47a918b454618dbee, type: 3}
       propertyPath: dialogue.talkingTag
       value: Lion
