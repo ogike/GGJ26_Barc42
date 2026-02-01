@@ -49,7 +49,7 @@ Lion: Let's get to the point.<br>What do you want?
     -> HUB
 * What is your finest liquor?
     -> CHIT_CHAT_LIQUOR
-* {getCurrentInterestLion > 0} [Lure them]
+* {getCurrentInterestLion() > 0} [Lure them]
     -> LURE
 + Sorry. I have to go.
     -> DONE
@@ -107,7 +107,7 @@ Fox: What do you want from me?
     -> CHIT_CHAT_FLATTER
 * Did you by any chance see any "Carmen" here?
     -> CHIT_CHAT_DRUGS
-* {getCurrentInterestFox > 6} [Lure them]
+* {getCurrentInterestFox() > 6} [Lure them]
     -> LURE
 * Sorry. I have to go.
     -> DONE
@@ -151,7 +151,6 @@ fox: You ran out of choces.
 Meow.
 -> DONE
 
-VAR bear_war_interest = 0
 
 === BEAR
 
@@ -163,8 +162,8 @@ VAR bear_war_interest = 0
 }
 
 = INTRODUCTION
-Player: You have a strong presence.<br>What's bringing you here tonight?
-Bear: Flattery won't get you anywhere.<br>What is that you want?
+Player: You strike an imposing figure, Mr Bear.<br>What brings you here tonight?
+Bear: Flattery won't get you anywhere.<br>What is it that you want?
 -> HUB
 
 = HUB
@@ -172,7 +171,7 @@ Bear: Flattery won't get you anywhere.<br>What is that you want?
     -> CHIT_CHAT_GUARD
 * What is your goal here at the fundraiser?
     -> CHIT_CHAT_FUNDRAISE
-* {bear_war_interest > 0} [Lure them]
+* {getCurrentInterestBear() > 0} [Lure them]
     -> LURE
 + Sorry. I have to go.
     -> DONE
@@ -183,18 +182,18 @@ Bear: I can't talk about my work, it is off limits.
 Bear: Why do you ask?
 * Was hoping to get a bodyguard myself, but then this is not the right place for it.
     Bear: Yes, that is not a topic you should bring up out of the blue here.
-    ~ bear_war_interest--
+    ~ changeCurrentInterestBear(-1)
 * I was thinking of networking around security companies.
     Player: My next big investment will be in a bar chain across the city.<br>Hoped you could recommend me some services?
     Bear: I have a few people I could ask.
     Player: That would be great, thank you.
-    ~ bear_war_interest++
+    ~ changeCurrentInterestBear(1)
 - -> HUB
 
 = CHIT_CHAT_FUNDRAISE
 Bear: I care about the country's children.<br>You?
 * I would like to help them too. I have big hopes in my next investment,<br>hope the masses see the potential as well.
-    ~ bear_war_interest++
+    ~ changeCurrentInterestBear(1)
 -> HUB
 
 = LURE
@@ -233,7 +232,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: Oh, stop. You are much too curious.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -245,7 +244,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: Shhh, people are staring.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -257,7 +256,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: I should maybe stop gossiping.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -269,7 +268,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: With all this talk, the ice in my drink is melting.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -281,7 +280,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: Ah, to be young again.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -293,7 +292,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: Ah... I wish my mask was prettier.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -305,7 +304,7 @@ VAR goss = -> GOSSIP1
 {
     - CHOOSEGOSSIP <= 2: -> CHOOSEGOSSIP
     - else: 
-        Gossiper: We should not draw more attention.
+        Gossiper: Just one more drink, I promise.
         -> DONE
 }
 = CHOOSEGOSSIP
@@ -314,22 +313,27 @@ VAR goss = -> GOSSIP1
 -> DONE
 
 === GOSSIP1
-    Gossiper: Hahaha1
+    Player: Mr Bear looks tense.
+    Gossiper: Oh my, that one with the bear mask is the minister. I heard him shouting to a valet after he offered to help him with his suitcase ohohoho.
 -> DONE
 === GOSSIP2
-    Gossiper: Hahaha2
+    Player: Quite the fashion side-show going on tonight.
+    Gossiper: Truly. I can't believe the CEO of RealESpace is wearing a genuine Camille Lecourt design. She slayin', too.
 -> DONE
 === GOSSIP3
-    Gossiper: Hahaha3
+    Player: You look worried
+    Gossiper: The owner looks stressed. I have not seen them even stop for a drink today. They're really earning the lion monicker.
 -> DONE
 === GOSSIP4
-    Gossiper: Hahaha4
+    Player: What an event. Like a who's who of movers and shakers.
+    Gossiper: I haven't seen Sandra though. But it's no wonder the owner of the Royal Cat Hotel would not<br>want her or their kids in the fish tank when the sharks are swimming.
 -> DONE
 === GOSSIP5
-    Gossiper: Hahaha5
+    Player: Imagine having the gall to attend a fundraiser to ask for money... 
+    Gossiper: I know right, the minister might think he can garner enough support if he secures donations, but I can tell his ship is sinking.  
 -> DONE
 === GOSSIP6
-    Gossiper: Hahaha6
+    Gossiper: Have you seen Carmen? She owes me a hit.
 -> DONE
     
 
