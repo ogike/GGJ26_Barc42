@@ -49,7 +49,7 @@ Lion: Let's get to the point.<br>What do you want?
     -> HUB
 * What is your finest liquor?
     -> CHIT_CHAT_LIQUOR
-* {getCurrentInterestLion > 0} [Lure them]
+* {getCurrentInterestLion() > 0} [Lure them]
     -> LURE
 + Sorry. I have to go.
     -> DONE
@@ -107,7 +107,7 @@ Fox: What do you want from me?
     -> CHIT_CHAT_FLATTER
 * Did you by any chance see any "Carmen" here?
     -> CHIT_CHAT_DRUGS
-* {getCurrentInterestFox > 6} [Lure them]
+* {getCurrentInterestFox() > 6} [Lure them]
     -> LURE
 * Sorry. I have to go.
     -> DONE
