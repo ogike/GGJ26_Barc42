@@ -97,9 +97,13 @@ namespace UI
         [SerializeField] private GameObject dialoguePanel;
         
         [SerializeField] private TextMeshProUGUI dialogueText;
-        [SerializeField] private Image npcPortrait; //TODO: replace with custom PanelUI
-        [SerializeField] private Image playerPortrait;
+        [SerializeField] private TextMeshProUGUI talkingTitleText;
+        [SerializeField] private UIElement npcPortrait;
+        [SerializeField] private UIElement playerPortrait;
         [SerializeField] private PanelUI continueIcon;
+
+        private Image _npcPortraitImage;
+        private Image _playerPortraitImage;
 
 
         [Header("Player Choice Dialogue UI")]
@@ -132,6 +136,9 @@ namespace UI
                 box.SetCachedValues(tweening);
                 box.ApplyStyle(choiceStyleNotSelected, tweening);
             });
+
+            _npcPortraitImage = npcPortrait.GetComponent<Image>();
+            _playerPortraitImage = playerPortrait.GetComponent<Image>();
         }
 
         private void Start()
@@ -163,9 +170,15 @@ namespace UI
             dialogueText.maxVisibleCharacters = num;
         }
 
+        public void SetTalkingTitle(string title)
+        {
+            talkingTitleText.text = title;
+        }
+
         public void LoadLinePlayer(string text, bool thought)
         {
-            //TODO: select player portrait
+            playerPortrait.Show();
+            npcPortrait.Hide();
             
             HideContinueIcon();
             
@@ -188,7 +201,8 @@ namespace UI
         
         public void LoadLineNpc(string text)
         {
-            //TODO: select npc portrait
+            playerPortrait.Hide();
+            npcPortrait.Show();
             
             HideContinueIcon();
             playerChoiceBoxes.ForEach(box => box.Hide());
@@ -203,6 +217,8 @@ namespace UI
         public void ShowChoicesPanel(List<string> choiceTexts, int selectedChoice)
         {
             nonChoicePanel.SetActive(false);
+            playerPortrait.Show();
+            npcPortrait.Hide();
 
             int maxCount = playerChoiceBoxes.Count;
             if (choiceTexts.Count > maxCount)
@@ -240,12 +256,12 @@ namespace UI
 
         public void SetPlayerPortrait(Sprite img)
         {
-            playerPortrait.sprite = img;
+            _playerPortraitImage.sprite = img;
         }
 
         public void SetNpcPortrait(Sprite img)
         {
-            npcPortrait.sprite = img;
+            _npcPortraitImage.sprite = img;
         }
 
         public void ShowInteractionBlurb(string line)
