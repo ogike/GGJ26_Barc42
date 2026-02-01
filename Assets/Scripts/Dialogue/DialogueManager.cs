@@ -450,6 +450,7 @@ namespace Dialogue
         {
             _hasShownChoice = true;
             _canContinueToNextLine = true;
+            _npcTalking = false;
             
             _currentChoiceIndex = 0;
             List<string> choiceTexts = new List<string>();
